@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wheel_of_the_year/pages/sabbat_single.dart';
 
 import '../models/sabbat.dart';
 
@@ -45,7 +46,11 @@ class SabbatCard extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     splashColor: Colors.red,
-                    onTap: () => {},
+                    onTap: () => {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => SabbatSingle(sabbat: sabbat),
+                      ))
+                    },
                   )))
         ],
       ),
