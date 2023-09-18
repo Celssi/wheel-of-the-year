@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wheel_of_the_year/stores/navigation_store.dart';
+
+import '../main.dart';
 
 class Buttons extends StatelessWidget {
-  final NavigationStore navigationStore;
-
-  const Buttons(this.navigationStore, {super.key});
+  const Buttons({super.key});
 
   @override
   Widget build(BuildContext context) {

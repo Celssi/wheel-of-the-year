@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wheel_of_the_year/stores/sabbat_store.dart';
+
+import '../main.dart';
 
 class SabbatDisplay extends StatelessWidget {
-  final SabbatStore sabbatStore;
-
-  const SabbatDisplay(this.sabbatStore, {super.key});
+  const SabbatDisplay({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class SabbatDisplay extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                        'assets/images/${sabbatStore.closestName ?? 'Lake'}.jpg'),
+                        'assets/images/${sabbatStore.closestName}.jpg'),
                     fit: BoxFit.cover),
               ),
               child: Column(

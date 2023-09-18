@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wheel_of_the_year/stores/navigation_store.dart';
 
 import '../models/sabbat.dart';
 import 'buttons.dart';
 
 class SabbatSingle extends StatelessWidget {
-  final NavigationStore navigationStore; // Mistä tää tulee
-
   const SabbatSingle({
     super.key,
     required this.sabbat,
@@ -55,6 +52,6 @@ class SabbatSingle extends StatelessWidget {
                         ),
                       ],
                     )))),
-        bottomNavigationBar: Buttons(navigationStore));
+        bottomNavigationBar: const Buttons());
   }
 }

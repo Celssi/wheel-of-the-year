@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wheel_of_the_year/stores/sabbat_store.dart';
 
+import '../main.dart';
 import 'sabbat_card.dart';
 
 class SabbatList extends StatelessWidget {
-  final SabbatStore sabbatStore;
-
-  const SabbatList(this.sabbatStore, {super.key});
+  const SabbatList({super.key});
 
   @override
   Widget build(BuildContext context) {
