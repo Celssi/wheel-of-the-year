@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-import '../main.dart';
-import 'sabbat_card.dart';
+import 'package:wheel_of_the_year/main.dart';
+import 'package:wheel_of_the_year/widgets/sabbat_card.dart';
 
 class SabbatList extends StatelessWidget {
   const SabbatList({super.key});

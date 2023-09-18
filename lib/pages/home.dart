@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:wheel_of_the_year/main.dart';
 import 'package:wheel_of_the_year/widgets/buttons.dart';
 import 'package:wheel_of_the_year/widgets/sabbat_display.dart';
 import 'package:wheel_of_the_year/widgets/sabbat_list.dart';
-
-import '../main.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

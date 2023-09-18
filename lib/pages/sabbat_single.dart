@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../models/sabbat.dart';
+import 'package:wheel_of_the_year/models/sabbat.dart';
 
 class SabbatSingle extends StatelessWidget {
   const SabbatSingle({

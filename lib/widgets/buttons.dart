@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-import '../main.dart';
+import 'package:wheel_of_the_year/main.dart';
 
 class Buttons extends StatelessWidget {
   const Buttons({super.key});

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wheel_of_the_year/models/sabbat.dart';
 import 'package:wheel_of_the_year/pages/sabbat_single.dart';
-
-import '../models/sabbat.dart';
 
 class SabbatCard extends StatelessWidget {
   const SabbatCard({
-    super.key,
     required this.sabbat,
+    super.key,
   });
 
   final Sabbat sabbat;
@@ -31,6 +30,7 @@ class SabbatCard extends StatelessWidget {
                     fit: BoxFit.cover),
               ),
               child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.7),
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
