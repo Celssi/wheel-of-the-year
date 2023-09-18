@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/sabbat.dart';
-import 'buttons.dart';
+import '../widgets/buttons.dart';
 
 class SabbatSingle extends StatelessWidget {
   const SabbatSingle({

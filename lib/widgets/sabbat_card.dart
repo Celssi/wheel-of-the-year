@@ -45,7 +45,7 @@ class SabbatCard extends StatelessWidget {
               child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    splashColor: Colors.red,
+                    splashColor: Colors.transparent,
                     onTap: () => {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => SabbatSingle(sabbat: sabbat),
