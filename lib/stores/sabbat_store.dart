@@ -9,16 +9,16 @@ List<Sabbat> getSabbats() {
   DateTime now = DateTime.now();
   var sabbats = [
     Sabbat(DateTime.parse('${now.year}-02-01'), 'Imbolc'),
-    Sabbat(DateTime.parse('${now.year}-04-21'), 'Ostara'),
+    Sabbat(DateTime.parse('${now.year}-04-20'), 'Ostara'),
     Sabbat(DateTime.parse('${now.year}-05-01'), 'Beltane'),
     Sabbat(DateTime.parse('${now.year}-06-21'), 'Litha'),
     Sabbat(DateTime.parse('${now.year}-08-01'), 'Lughnasa'),
-    Sabbat(DateTime.parse('${now.year}-09-21'), 'Mabon'),
+    Sabbat(DateTime.parse('${now.year}-09-22'), 'Mabon'),
     Sabbat(DateTime.parse('${now.year}-11-01'), 'Samhain'),
     Sabbat(DateTime.parse('${now.year}-12-21'), 'Yule')
   ];
 
-  for (var sabbat in sabbats) {
+  for (final sabbat in sabbats) {
     if (sabbat.date.isBefore(now)) {
       sabbat.date = sabbat.date.copyWith(year: now.year + 1);
     }
@@ -39,7 +39,7 @@ abstract class SabbatStoreBase with Store {
     Sabbat closestSabbat = sabbats.first;
     int daysUntil = 999;
 
-    for (var sabbat in sabbats) {
+    for (final sabbat in sabbats) {
       int currentDaysUntil = sabbat.date.difference(now).inDays;
 
       if (currentDaysUntil >= 0 && currentDaysUntil < daysUntil) {
