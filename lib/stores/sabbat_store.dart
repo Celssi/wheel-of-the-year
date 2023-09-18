@@ -7,7 +7,6 @@ class SabbatStore = SabbatStoreBase with _$SabbatStore;
 
 List<Sabbat> getSabbats() {
   DateTime now = DateTime.now();
-
   var sabbats = [
     Sabbat(DateTime.parse('${now.year}-02-01'), 'Imbolc'),
     Sabbat(DateTime.parse('${now.year}-04-21'), 'Ostara'),
