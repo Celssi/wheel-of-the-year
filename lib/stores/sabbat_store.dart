@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
+import 'package:wheel_of_the_year/main.dart';
 import 'package:wheel_of_the_year/models/sabbat.dart';
+import 'package:wheel_of_the_year/models/sabbat_text.dart';
 
 part 'sabbat_store.g.dart';
 
@@ -33,6 +35,12 @@ abstract class SabbatStoreBase with Store {
   @observable
   ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of(getSabbats());
 
+  @observable
+  late SabbatText sabbatText;
+
+  @observable
+  bool isLoading = false;
+
   @computed
   Sabbat get closest {
     DateTime now = DateTime.now();
@@ -60,5 +68,12 @@ abstract class SabbatStoreBase with Store {
   @computed
   String get closestName {
     return closest.name;
+  }
+
+  @action
+  Future getSabbatText(String name) async {
+    isLoading = true;
+    sabbatText = await textApi.getText(name);
+    isLoading = false;
   }
 }

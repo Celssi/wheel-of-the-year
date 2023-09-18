@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:wheel_of_the_year/api/text_api.dart';
 import 'package:wheel_of_the_year/pages/home.dart';
 import 'package:wheel_of_the_year/stores/navigation_store.dart';
 import 'package:wheel_of_the_year/stores/sabbat_store.dart';
 
 final NavigationStore navigationStore = NavigationStore();
 final SabbatStore sabbatStore = SabbatStore();
+final TextApi textApi = TextApi();
 
 void main() {
   runApp(const MyApp());
