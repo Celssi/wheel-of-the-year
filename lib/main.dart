@@ -18,10 +18,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Wheel of the Year',
         theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
-            useMaterial3: true,
-            splashColor: Colors.transparent,
-            fontFamily: 'Caveat'),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+          useMaterial3: true,
+          splashColor: Colors.transparent,
+          fontFamily: 'Caveat',
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: <TargetPlatform, PageTransitionsBuilder>{
+              TargetPlatform.android: ZoomPageTransitionsBuilder(
+                allowEnterRouteSnapshotting: false,
+              ),
+            },
+          ),
+        ),
         home: const HomePage());
   }
 }
