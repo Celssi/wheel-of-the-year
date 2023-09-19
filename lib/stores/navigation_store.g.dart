@@ -29,7 +29,7 @@ mixin _$NavigationStore on NavigationStoreBase, Store {
       ActionController(name: 'NavigationStoreBase', context: context);
 
   @override
-  dynamic setSelectedIndex(int index) {
+  void setSelectedIndex(int index) {
     final _$actionInfo = _$NavigationStoreBaseActionController.startAction(
         name: 'NavigationStoreBase.setSelectedIndex');
     try {

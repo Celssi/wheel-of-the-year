@@ -16,7 +16,7 @@ class SabbatList extends StatelessWidget {
 
   List<Widget> getCards() {
     List<Widget> sabbats = List.of([]);
-    for (var sabbat in sabbatStore.sabbats) {
+    for (final sabbat in sabbatStore.sabbats) {
       sabbats.add(SabbatCard(sabbat: sabbat));
     }
 

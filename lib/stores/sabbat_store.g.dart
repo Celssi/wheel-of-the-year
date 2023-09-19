@@ -47,10 +47,52 @@ mixin _$SabbatStore on SabbatStoreBase, Store {
     });
   }
 
+  late final _$sabbatTextAtom =
+      Atom(name: 'SabbatStoreBase.sabbatText', context: context);
+
+  @override
+  SabbatText get sabbatText {
+    _$sabbatTextAtom.reportRead();
+    return super.sabbatText;
+  }
+
+  @override
+  set sabbatText(SabbatText value) {
+    _$sabbatTextAtom.reportWrite(value, super.sabbatText, () {
+      super.sabbatText = value;
+    });
+  }
+
+  late final _$isLoadingAtom =
+      Atom(name: 'SabbatStoreBase.isLoading', context: context);
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  late final _$getSabbatTextAsyncAction =
+      AsyncAction('SabbatStoreBase.getSabbatText', context: context);
+
+  @override
+  Future<dynamic> getSabbatText(String name) {
+    return _$getSabbatTextAsyncAction.run(() => super.getSabbatText(name));
+  }
+
   @override
   String toString() {
     return '''
 sabbats: ${sabbats},
+sabbatText: ${sabbatText},
+isLoading: ${isLoading},
 closest: ${closest},
 daysUntilNext: ${daysUntilNext},
 closestName: ${closestName}
