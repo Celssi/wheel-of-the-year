@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:wheel_of_the_year/main.dart';
 import 'package:wheel_of_the_year/widgets/buttons.dart';
-import 'package:wheel_of_the_year/widgets/sabbat_display.dart';
+import 'package:wheel_of_the_year/widgets/home_display.dart';
 import 'package:wheel_of_the_year/widgets/sabbat_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,11 +27,11 @@ class HomePage extends StatelessWidget {
   Widget getActiveWidget(int index) {
     switch (index) {
       case 0:
-        return const SabbatDisplay();
+        return const HomeDisplay();
       case 1:
         return const SabbatList();
     }
 
-    return const SabbatDisplay();
+    return const HomeDisplay();
   }
 }
