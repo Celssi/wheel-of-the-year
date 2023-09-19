@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moon_phase/moon_widget.dart';
 import 'package:wheel_of_the_year/helpers/moon_phase_calculator.dart';
+import 'package:wheel_of_the_year/moon_phase/moon_widget.dart';
 
 class MoonDisplay extends StatelessWidget {
   const MoonDisplay({super.key});
@@ -28,7 +28,7 @@ class MoonDisplay extends StatelessWidget {
               date: DateTime(2023, 9, 19),
               resolution: 64,
               size: 48,
-              earthshineColor: Colors.blueGrey.shade900,
+              earthShineColor: Colors.blueGrey.shade900,
             ),
             Text(
               getLunarPhase(),
