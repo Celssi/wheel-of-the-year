@@ -1,18 +1,15 @@
-class SabbatText {
-  SabbatText({
-    required this.name,
-    required this.paragraphs,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  SabbatText.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        paragraphs = List<String>.from(json['paragraphs']);
+part 'sabbat_text.freezed.dart';
+part 'sabbat_text.g.dart';
 
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'paragraphs': paragraphs,
-      };
+@freezed
+class SabbatText with _$SabbatText {
+  const factory SabbatText({
+    required String name,
+    required List<String> paragraphs,
+  }) = _SabbatText;
 
-  String name;
-  List<String> paragraphs;
+  factory SabbatText.fromJson(Map<String, Object?> json) =>
+      _$SabbatTextFromJson(json);
 }

@@ -38,7 +38,7 @@ abstract class SabbatStoreBase with Store {
   ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of(getSabbats());
 
   @observable
-  SabbatText sabbatText = SabbatText(name: '', paragraphs: []);
+  SabbatText sabbatText = const SabbatText(name: '', paragraphs: []);
 
   @observable
   bool isLoading = false;

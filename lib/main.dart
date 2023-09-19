@@ -12,8 +12,33 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final List<String> imagePaths = [
+      "Mabon.jpg",
+      "Samhain.jpg",
+      "Yule.jpg",
+      "Imbolc.jpg",
+      "Ostara.jpg",
+      "Beltane.jpg",
+      "Litha.jpg",
+      "Lughnasa.jpg",
+    ];
+
+    for (final imagePath in imagePaths) {
+      precacheImage(AssetImage("assets/images/$imagePath"), context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

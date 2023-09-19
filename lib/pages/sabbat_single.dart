@@ -39,51 +39,53 @@ class _SabbatSingleState extends State<SabbatSingle> {
       body: Hero(
         tag: widget.sabbat.name,
         child: Observer(
-            builder: (_) => sabbatStore.isLoading
-                ? const Spinner()
-                : getCard(sabbatStore.sabbatText.paragraphs)),
+            builder: (_) => Card(
+                child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                              'assets/images/${widget.sabbat.name}.jpg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(8)),
+                        ),
+                        child: sabbatStore.isLoading
+                            ? ListView(children: const [Spinner()])
+                            : getTextList())))),
       ),
     );
   }
 
-  Widget getCard(List<String> paragraphs) {
-    return Card(
-        child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/${widget.sabbat.name}.jpg'),
-                  fit: BoxFit.cover),
-            ),
-            child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                ),
-                child: ListView(
-                  children: <Widget>[
-                    Text(
-                      widget.sabbat.name,
-                      style: const TextStyle(fontSize: 48),
-                    ),
-                    Text(
-                      '${widget.sabbat.date.day}.${widget.sabbat.date.month}.${widget.sabbat.date.year}',
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                    const SizedBox(height: 28),
-                    ...paragraphs.map((p) {
-                      return Column(
-                        children: [
-                          Text(
-                            p,
-                            style: const TextStyle(fontSize: 24),
-                          ),
-                          const SizedBox(height: 20)
-                        ],
-                      );
-                    }).toList()
-                  ],
-                ))));
+  ListView getTextList() {
+    return ListView(
+      children: <Widget>[
+        Text(
+          widget.sabbat.name,
+          style: const TextStyle(fontSize: 48),
+        ),
+        Text(
+          '${widget.sabbat.date.day}.${widget.sabbat.date.month}.${widget.sabbat.date.year}',
+          style: const TextStyle(fontSize: 24),
+        ),
+        const SizedBox(height: 28),
+        ...sabbatStore.sabbatText.paragraphs.map((p) {
+          return Column(
+            children: [
+              Text(
+                p,
+                style: const TextStyle(fontSize: 24),
+              ),
+              const SizedBox(height: 20)
+            ],
+          );
+        }).toList()
+      ],
+    );
   }
 }
