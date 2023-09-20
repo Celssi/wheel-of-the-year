@@ -45,7 +45,7 @@ class _SabbatSingleState extends State<SabbatSingle> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/${widget.sabbat.name}.jpg'),
+                              'assets/images/${widget.sabbat.name}.png'),
                           fit: BoxFit.cover),
                     ),
                     child: Container(

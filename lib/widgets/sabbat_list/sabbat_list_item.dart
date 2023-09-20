@@ -26,7 +26,7 @@ class SabbatListItem extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/${sabbat.name}.jpg'),
+                    image: AssetImage('assets/images/${sabbat.name}.png'),
                     fit: BoxFit.cover),
               ),
               child: Container(

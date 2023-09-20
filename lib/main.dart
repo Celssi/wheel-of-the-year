@@ -25,14 +25,14 @@ class _MyAppState extends State<MyApp> {
     super.didChangeDependencies();
 
     final List<String> imagePaths = [
-      "Mabon.jpg",
-      "Samhain.jpg",
-      "Yule.jpg",
-      "Imbolc.jpg",
-      "Ostara.jpg",
-      "Beltane.jpg",
-      "Litha.jpg",
-      "Lughnasa.jpg",
+      "Mabon.png",
+      "Samhain.png",
+      "Yule.png",
+      "Imbolc.png",
+      "Ostara.png",
+      "Beltane.png",
+      "Litha.png",
+      "Lughnasa.png",
     ];
 
     for (final imagePath in imagePaths) {
