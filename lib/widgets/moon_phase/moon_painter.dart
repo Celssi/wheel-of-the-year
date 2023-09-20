@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:witch_army_knife/moon_phase/moon_phase.dart';
+import 'package:witch_army_knife/widgets/moon_phase/moon_phase.dart';
 
 class MoonPainter extends CustomPainter {
   MoonPainter({required this.moonWidget});

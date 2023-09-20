@@ -20,14 +20,14 @@ class SabbatCard extends StatelessWidget {
             style: TextStyle(fontSize: 35),
           ),
           Text(
-            sabbatStore.sabbats.isNotEmpty ? sabbatStore.closest.name : '-',
+            dataStore.sabbats.isNotEmpty ? dataStore.closestSabbat.name : '-',
             style: const TextStyle(fontSize: 48),
           ),
           Text(
-            sabbatStore.sabbats.isNotEmpty
-                ? sabbatStore.daysUntilNext == 0
+            dataStore.sabbats.isNotEmpty
+                ? dataStore.daysUntilNextSabbat == 0
                     ? 'Today!'
-                    : 'Which is in ${sabbatStore.daysUntilNext} days'
+                    : 'Which is in ${dataStore.daysUntilNextSabbat} days'
                 : '-',
             style: const TextStyle(fontSize: 24),
           ),

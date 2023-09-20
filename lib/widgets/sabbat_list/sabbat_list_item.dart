@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/sabbat.dart';
 import 'package:witch_army_knife/pages/sabbat_single.dart';
 
@@ -14,10 +15,11 @@ class SabbatListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.red,
-      onTap: () => {
+      onTap: () {
+        dataStore.setSelectedSabbat(sabbat);
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SabbatSingle(sabbat: sabbat),
-        ))
+          builder: (context) => const SabbatSingle(),
+        ));
       },
       child: Hero(
         tag: sabbat.name,

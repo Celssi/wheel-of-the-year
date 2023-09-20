@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:witch_army_knife/moon_phase/moon_painter.dart';
+import 'package:witch_army_knife/widgets/moon_phase/moon_painter.dart';
 
 class MoonWidget extends StatelessWidget {
   const MoonWidget({

@@ -21,7 +21,7 @@ class BottomNavigation extends StatelessWidget {
                   backgroundColor: Colors.white,
                 ),
               ],
-              currentIndex: navigationStore.selectedIndex,
+              currentIndex: dataStore.selectedTab,
               selectedItemColor: Colors.red,
               selectedFontSize: 16,
               unselectedFontSize: 16,
@@ -30,7 +30,7 @@ class BottomNavigation extends StatelessWidget {
               iconSize: 30,
               selectedLabelStyle: const TextStyle(fontFamily: 'roboto'),
               unselectedLabelStyle: const TextStyle(fontFamily: 'roboto'),
-              onTap: (int index) => navigationStore.setSelectedIndex(index),
+              onTap: (int index) => dataStore.setSelectedTab(index),
             ));
   }
 }

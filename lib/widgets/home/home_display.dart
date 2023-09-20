@@ -16,7 +16,7 @@ class HomeDisplay extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                        'assets/images/${sabbatStore.closestName}.png'),
+                        'assets/images/${dataStore.closestSabbatName}.png'),
                     fit: BoxFit.cover),
               ),
               child: ListView(

@@ -1,3 +1,5 @@
+import 'package:witch_army_knife/models/sabbat.dart';
+
 enum SeasonEvent {
   imbolc,
   ostara,
@@ -45,4 +47,29 @@ DateTime calculateSeasonEvent(int year, SeasonEvent event) {
     default:
       throw ArgumentError("Invalid SeasonEvent value");
   }
+}
+
+List<Sabbat> getSabbats() {
+  DateTime now = DateTime.now();
+  var sabbats = [
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.imbolc), 'Imbolc'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.ostara), 'Ostara'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.beltane), 'Beltane'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.litha), 'Litha'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.lughnasa), 'Lughnasa'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.mabon), 'Mabon'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.samhain), 'Samhain'),
+    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.yule), 'Yule')
+  ];
+
+  for (var i = 0; i < sabbats.length; i++) {
+    if (sabbats[i].date.isBefore(now)) {
+      sabbats[i].date =
+          calculateSeasonEvent(now.year + 1, seasonEventMap[sabbats[i].name]!);
+    }
+  }
+
+  sabbats.sort((a, b) => a.date.compareTo(b.date));
+
+  return sabbats;
 }

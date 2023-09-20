@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/api/text_api.dart';
 import 'package:witch_army_knife/pages/home.dart';
-import 'package:witch_army_knife/stores/navigation_store.dart';
-import 'package:witch_army_knife/stores/sabbat_store.dart';
+import 'package:witch_army_knife/stores/data_store.dart';
 
-final NavigationStore navigationStore = NavigationStore();
-final SabbatStore sabbatStore = SabbatStore();
+final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
 
 void main() {
