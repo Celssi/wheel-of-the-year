@@ -1,5 +1,3 @@
-library moon_phase;
-
 import 'dart:math';
 
 export 'moon_painter.dart' show MoonPainter;

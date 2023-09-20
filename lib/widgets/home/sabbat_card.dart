@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_blade/main.dart';
 
-class SabbatDisplay extends StatelessWidget {
-  const SabbatDisplay({super.key});
+class SabbatCard extends StatelessWidget {
+  const SabbatCard({super.key});
 
   @override
   Widget build(BuildContext context) {

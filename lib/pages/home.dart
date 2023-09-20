@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_blade/main.dart';
-import 'package:witch_army_blade/widgets/buttons.dart';
-import 'package:witch_army_blade/widgets/home_display.dart';
-import 'package:witch_army_blade/widgets/sabbat_list.dart';
+import 'package:witch_army_blade/widgets/home/home_display.dart';
+import 'package:witch_army_blade/widgets/navigation/bottom_navigation.dart';
+import 'package:witch_army_blade/widgets/sabbat_list/sabbat_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
         body: Observer(
             builder: (_) => Container(
                 child: getActiveWidget(navigationStore.selectedIndex))),
-        bottomNavigationBar: const Buttons());
+        bottomNavigationBar: const BottomNavigation());
   }
 
   Widget getActiveWidget(int index) {

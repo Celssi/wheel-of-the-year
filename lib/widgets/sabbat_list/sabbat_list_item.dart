@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:witch_army_blade/models/sabbat.dart';
 import 'package:witch_army_blade/pages/sabbat_single.dart';
 
-class SabbatCard extends StatelessWidget {
-  const SabbatCard({
+class SabbatListItem extends StatelessWidget {
+  const SabbatListItem({
     required this.sabbat,
     super.key,
   });

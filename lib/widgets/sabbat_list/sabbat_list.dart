@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_blade/main.dart';
-import 'package:witch_army_blade/widgets/sabbat_card.dart';
+import 'package:witch_army_blade/widgets/sabbat_list/sabbat_list_item.dart';
 
 class SabbatList extends StatelessWidget {
   const SabbatList({super.key});
@@ -17,7 +17,7 @@ class SabbatList extends StatelessWidget {
   List<Widget> getCards() {
     List<Widget> sabbats = List.of([]);
     for (final sabbat in sabbatStore.sabbats) {
-      sabbats.add(SabbatCard(sabbat: sabbat));
+      sabbats.add(SabbatListItem(sabbat: sabbat));
     }
 
     return sabbats;

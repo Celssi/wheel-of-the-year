@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_blade/main.dart';
 import 'package:witch_army_blade/models/sabbat.dart';
-import 'package:witch_army_blade/widgets/spinner.dart';
+import 'package:witch_army_blade/widgets/others/spinner.dart';
 
 class SabbatSingle extends StatefulWidget {
   const SabbatSingle({

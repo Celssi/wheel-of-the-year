@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_blade/main.dart';
-import 'package:witch_army_blade/widgets/moon_display.dart';
-import 'package:witch_army_blade/widgets/sabbat_display.dart';
+import 'package:witch_army_blade/widgets/home/moon_card.dart';
+import 'package:witch_army_blade/widgets/home/sabbat_card.dart';
 
 class HomeDisplay extends StatelessWidget {
   const HomeDisplay({super.key});
@@ -21,11 +21,11 @@ class HomeDisplay extends StatelessWidget {
               ),
               child: ListView(
                 children: const [
-                  SabbatDisplay(),
+                  SabbatCard(),
                   SizedBox(
                     height: 20,
                   ),
-                  MoonDisplay()
+                  MoonCard()
                 ],
               ),
             ));
