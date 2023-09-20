@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:witch_army_blade/models/sabbat_text.dart';
+import 'package:witch_army_knife/models/sabbat_text.dart';
 
 class TextApi {
   Future<SabbatText> getText(String name) async {

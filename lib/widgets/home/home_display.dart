@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:witch_army_blade/main.dart';
-import 'package:witch_army_blade/widgets/home/moon_card.dart';
-import 'package:witch_army_blade/widgets/home/sabbat_card.dart';
+import 'package:witch_army_knife/main.dart';
+import 'package:witch_army_knife/widgets/home/moon_card.dart';
+import 'package:witch_army_knife/widgets/home/sabbat_card.dart';
 
 class HomeDisplay extends StatelessWidget {
   const HomeDisplay({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:witch_army_blade/api/text_api.dart';
-import 'package:witch_army_blade/pages/home.dart';
-import 'package:witch_army_blade/stores/navigation_store.dart';
-import 'package:witch_army_blade/stores/sabbat_store.dart';
+import 'package:witch_army_knife/api/text_api.dart';
+import 'package:witch_army_knife/pages/home.dart';
+import 'package:witch_army_knife/stores/navigation_store.dart';
+import 'package:witch_army_knife/stores/sabbat_store.dart';
 
 final NavigationStore navigationStore = NavigationStore();
 final SabbatStore sabbatStore = SabbatStore();
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Witch Army Blade',
+        title: 'Witch Army Knife',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           useMaterial3: true,

@@ -1,8 +1,8 @@
 import 'package:mobx/mobx.dart';
-import 'package:witch_army_blade/helpers/sabbat_helpers.dart';
-import 'package:witch_army_blade/main.dart';
-import 'package:witch_army_blade/models/sabbat.dart';
-import 'package:witch_army_blade/models/sabbat_text.dart';
+import 'package:witch_army_knife/helpers/sabbat_helpers.dart';
+import 'package:witch_army_knife/main.dart';
+import 'package:witch_army_knife/models/sabbat.dart';
+import 'package:witch_army_knife/models/sabbat_text.dart';
 
 part 'sabbat_store.g.dart';
 

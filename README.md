@@ -1,6 +1,6 @@
-# witch_army_blade
+# witch_army_knife
 
-Witch Army Blade
+Witch Army Knife
 
 ## Getting Started
 
@@ -15,4 +15,4 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-flutter packages pub run build_runner build# witch-army-blade
+flutter packages pub run build_runner build# witch-army-knife

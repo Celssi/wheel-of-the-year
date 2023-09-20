@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:witch_army_blade/models/sabbat.dart';
-import 'package:witch_army_blade/pages/sabbat_single.dart';
+import 'package:witch_army_knife/models/sabbat.dart';
+import 'package:witch_army_knife/pages/sabbat_single.dart';
 
 class SabbatListItem extends StatelessWidget {
   const SabbatListItem({

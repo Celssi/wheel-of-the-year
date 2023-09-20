@@ -9,11 +9,11 @@ part of 'sabbat_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SabbatStore on SabbatStoreBase, Store {
-  Computed<Sabbat>? _$closestComputed;
+  Computed<InvalidType>? _$closestComputed;
 
   @override
-  Sabbat get closest =>
-      (_$closestComputed ??= Computed<Sabbat>(() => super.closest,
+  InvalidType get closest =>
+      (_$closestComputed ??= Computed<InvalidType>(() => super.closest,
               name: 'SabbatStoreBase.closest'))
           .value;
   Computed<int>? _$daysUntilNextComputed;
@@ -35,13 +35,13 @@ mixin _$SabbatStore on SabbatStoreBase, Store {
       Atom(name: 'SabbatStoreBase.sabbats', context: context);
 
   @override
-  ObservableList<Sabbat> get sabbats {
+  ObservableList<InvalidType> get sabbats {
     _$sabbatsAtom.reportRead();
     return super.sabbats;
   }
 
   @override
-  set sabbats(ObservableList<Sabbat> value) {
+  set sabbats(ObservableList<InvalidType> value) {
     _$sabbatsAtom.reportWrite(value, super.sabbats, () {
       super.sabbats = value;
     });
@@ -51,13 +51,13 @@ mixin _$SabbatStore on SabbatStoreBase, Store {
       Atom(name: 'SabbatStoreBase.sabbatText', context: context);
 
   @override
-  SabbatText get sabbatText {
+  InvalidType get sabbatText {
     _$sabbatTextAtom.reportRead();
     return super.sabbatText;
   }
 
   @override
-  set sabbatText(SabbatText value) {
+  set sabbatText(InvalidType value) {
     _$sabbatTextAtom.reportWrite(value, super.sabbatText, () {
       super.sabbatText = value;
     });

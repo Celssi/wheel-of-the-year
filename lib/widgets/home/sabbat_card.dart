@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:witch_army_blade/main.dart';
+import 'package:witch_army_knife/main.dart';
 
 class SabbatCard extends StatelessWidget {
   const SabbatCard({super.key});
