@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wheel_of_the_year/main.dart';
-import 'package:wheel_of_the_year/widgets/moon_display.dart';
-import 'package:wheel_of_the_year/widgets/sabbat_display.dart';
+import 'package:witch_army_blade/main.dart';
+import 'package:witch_army_blade/widgets/moon_display.dart';
+import 'package:witch_army_blade/widgets/sabbat_display.dart';
 
 class HomeDisplay extends StatelessWidget {
   const HomeDisplay({super.key});

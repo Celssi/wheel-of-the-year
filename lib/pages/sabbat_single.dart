@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wheel_of_the_year/main.dart';
-import 'package:wheel_of_the_year/models/sabbat.dart';
-import 'package:wheel_of_the_year/widgets/spinner.dart';
+import 'package:witch_army_blade/main.dart';
+import 'package:witch_army_blade/models/sabbat.dart';
+import 'package:witch_army_blade/widgets/spinner.dart';
 
 class SabbatSingle extends StatefulWidget {
   const SabbatSingle({
@@ -33,7 +33,7 @@ class _SabbatSingleState extends State<SabbatSingle> {
         iconTheme: const IconThemeData(
           color: Colors.red,
         ),
-        title: const Text('Wheel of the Year',
+        title: const Text('Witch Army Blade',
             style: TextStyle(color: Colors.red, fontSize: 30)),
       ),
       body: Hero(

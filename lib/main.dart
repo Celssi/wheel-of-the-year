@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wheel_of_the_year/api/text_api.dart';
-import 'package:wheel_of_the_year/pages/home.dart';
-import 'package:wheel_of_the_year/stores/navigation_store.dart';
-import 'package:wheel_of_the_year/stores/sabbat_store.dart';
+import 'package:witch_army_blade/api/text_api.dart';
+import 'package:witch_army_blade/pages/home.dart';
+import 'package:witch_army_blade/stores/navigation_store.dart';
+import 'package:witch_army_blade/stores/sabbat_store.dart';
 
 final NavigationStore navigationStore = NavigationStore();
 final SabbatStore sabbatStore = SabbatStore();
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Wheel of the Year',
+        title: 'Witch Army Blade',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           useMaterial3: true,

@@ -1,8 +1,8 @@
 import 'package:mobx/mobx.dart';
-import 'package:wheel_of_the_year/helpers/sabbat_helpers.dart';
-import 'package:wheel_of_the_year/main.dart';
-import 'package:wheel_of_the_year/models/sabbat.dart';
-import 'package:wheel_of_the_year/models/sabbat_text.dart';
+import 'package:witch_army_blade/helpers/sabbat_helpers.dart';
+import 'package:witch_army_blade/main.dart';
+import 'package:witch_army_blade/models/sabbat.dart';
+import 'package:witch_army_blade/models/sabbat_text.dart';
 
 part 'sabbat_store.g.dart';
 

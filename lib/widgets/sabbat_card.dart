@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wheel_of_the_year/models/sabbat.dart';
-import 'package:wheel_of_the_year/pages/sabbat_single.dart';
+import 'package:witch_army_blade/models/sabbat.dart';
+import 'package:witch_army_blade/pages/sabbat_single.dart';
 
 class SabbatCard extends StatelessWidget {
   const SabbatCard({

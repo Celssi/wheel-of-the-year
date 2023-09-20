@@ -1,6 +1,6 @@
-# wheel_of_the_year
+# witch_army_blade
 
-Wheel of the Year
+Witch Army Blade
 
 ## Getting Started
 
@@ -15,4 +15,4 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-flutter packages pub run build_runner build# wheel-of-the-year
+flutter packages pub run build_runner build# witch-army-blade

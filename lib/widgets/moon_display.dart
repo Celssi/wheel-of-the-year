@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wheel_of_the_year/helpers/moon_phase_calculator.dart';
-import 'package:wheel_of_the_year/moon_phase/moon_widget.dart';
+import 'package:witch_army_blade/helpers/moon_phase_calculator.dart';
+import 'package:witch_army_blade/moon_phase/moon_widget.dart';
 
 class MoonDisplay extends StatelessWidget {
   const MoonDisplay({super.key});

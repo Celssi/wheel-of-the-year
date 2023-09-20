@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:wheel_of_the_year/main.dart';
-import 'package:wheel_of_the_year/widgets/buttons.dart';
-import 'package:wheel_of_the_year/widgets/home_display.dart';
-import 'package:wheel_of_the_year/widgets/sabbat_list.dart';
+import 'package:witch_army_blade/main.dart';
+import 'package:witch_army_blade/widgets/buttons.dart';
+import 'package:witch_army_blade/widgets/home_display.dart';
+import 'package:witch_army_blade/widgets/sabbat_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.black87,
-          title: const Text('Wheel of the Year',
+          title: const Text('Witch Army Blade',
               style: TextStyle(color: Colors.red, fontSize: 30)),
         ),
         body: Observer(
