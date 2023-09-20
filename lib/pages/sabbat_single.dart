@@ -63,6 +63,8 @@ class _SabbatSingleState extends State<SabbatSingle> {
   }
 
   ListView getTextList() {
+    List<String> paragraphs = sabbatStore.sabbatText.text.split('\n');
+
     return ListView(
       children: <Widget>[
         Text(
@@ -74,8 +76,9 @@ class _SabbatSingleState extends State<SabbatSingle> {
           style: const TextStyle(fontSize: 24),
         ),
         const SizedBox(height: 28),
-        ...sabbatStore.sabbatText.paragraphs.map((p) {
+        ...paragraphs.map((p) {
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 p,

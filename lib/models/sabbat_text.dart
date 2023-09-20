@@ -7,7 +7,7 @@ part 'sabbat_text.g.dart';
 class SabbatText with _$SabbatText {
   const factory SabbatText({
     required String name,
-    required List<String> paragraphs,
+    required String text,
   }) = _SabbatText;
 
   factory SabbatText.fromJson(Map<String, Object?> json) =>

@@ -9,13 +9,11 @@ part of 'sabbat_text.dart';
 _$_SabbatText _$$_SabbatTextFromJson(Map<String, dynamic> json) =>
     _$_SabbatText(
       name: json['name'] as String,
-      paragraphs: (json['paragraphs'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      text: json['text'] as String,
     );
 
 Map<String, dynamic> _$$_SabbatTextToJson(_$_SabbatText instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'paragraphs': instance.paragraphs,
+      'text': instance.text,
     };

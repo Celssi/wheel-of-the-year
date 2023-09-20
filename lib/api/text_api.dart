@@ -9,11 +9,11 @@ class TextApi {
     try {
       final res = await http.get(
         Uri.parse(
-          "https://celssi-wheel-of-the-year-backend-liq43pp4qa-uc.a.run.app/sabbats/$name",
+          "https://witch-backend-liq43pp4qa-lz.a.run.app/items/sabbatText/$name",
         ),
       );
 
-      return SabbatText.fromJson(jsonDecode(res.body));
+      return SabbatText.fromJson(jsonDecode(res.body)['data']);
     } catch (e) {
       debugPrint(e.toString());
       rethrow;

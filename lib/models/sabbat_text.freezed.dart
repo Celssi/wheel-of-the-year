@@ -21,7 +21,7 @@ SabbatText _$SabbatTextFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SabbatText {
   String get name => throw _privateConstructorUsedError;
-  List<String> get paragraphs => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $SabbatTextCopyWith<$Res> {
           SabbatText value, $Res Function(SabbatText) then) =
       _$SabbatTextCopyWithImpl<$Res, SabbatText>;
   @useResult
-  $Res call({String name, List<String> paragraphs});
+  $Res call({String name, String text});
 }
 
 /// @nodoc
@@ -52,17 +52,17 @@ class _$SabbatTextCopyWithImpl<$Res, $Val extends SabbatText>
   @override
   $Res call({
     Object? name = null,
-    Object? paragraphs = null,
+    Object? text = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      paragraphs: null == paragraphs
-          ? _value.paragraphs
-          : paragraphs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$_SabbatTextCopyWith<$Res>
       __$$_SabbatTextCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<String> paragraphs});
+  $Res call({String name, String text});
 }
 
 /// @nodoc
@@ -90,17 +90,17 @@ class __$$_SabbatTextCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? paragraphs = null,
+    Object? text = null,
   }) {
     return _then(_$_SabbatText(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      paragraphs: null == paragraphs
-          ? _value._paragraphs
-          : paragraphs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -108,26 +108,19 @@ class __$$_SabbatTextCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SabbatText implements _SabbatText {
-  const _$_SabbatText(
-      {required this.name, required final List<String> paragraphs})
-      : _paragraphs = paragraphs;
+  const _$_SabbatText({required this.name, required this.text});
 
   factory _$_SabbatText.fromJson(Map<String, dynamic> json) =>
       _$$_SabbatTextFromJson(json);
 
   @override
   final String name;
-  final List<String> _paragraphs;
   @override
-  List<String> get paragraphs {
-    if (_paragraphs is EqualUnmodifiableListView) return _paragraphs;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_paragraphs);
-  }
+  final String text;
 
   @override
   String toString() {
-    return 'SabbatText(name: $name, paragraphs: $paragraphs)';
+    return 'SabbatText(name: $name, text: $text)';
   }
 
   @override
@@ -136,14 +129,12 @@ class _$_SabbatText implements _SabbatText {
         (other.runtimeType == runtimeType &&
             other is _$_SabbatText &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other._paragraphs, _paragraphs));
+            (identical(other.text, text) || other.text == text));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_paragraphs));
+  int get hashCode => Object.hash(runtimeType, name, text);
 
   @JsonKey(ignore: true)
   @override
@@ -161,8 +152,7 @@ class _$_SabbatText implements _SabbatText {
 
 abstract class _SabbatText implements SabbatText {
   const factory _SabbatText(
-      {required final String name,
-      required final List<String> paragraphs}) = _$_SabbatText;
+      {required final String name, required final String text}) = _$_SabbatText;
 
   factory _SabbatText.fromJson(Map<String, dynamic> json) =
       _$_SabbatText.fromJson;
@@ -170,7 +160,7 @@ abstract class _SabbatText implements SabbatText {
   @override
   String get name;
   @override
-  List<String> get paragraphs;
+  String get text;
   @override
   @JsonKey(ignore: true)
   _$$_SabbatTextCopyWith<_$_SabbatText> get copyWith =>
