@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:witch_army_knife/widgets/navigation/bottom_navigation.dart';
+import 'package:witch_army_knife/helper-widgets/bottom_navigation.dart';
 
 class MainScaffold extends StatelessWidget {
   const MainScaffold(

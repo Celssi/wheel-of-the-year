@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_knife/main.dart';
-import 'package:witch_army_knife/widgets/sabbat_list/sabbat_list_item.dart';
+import 'package:witch_army_knife/pages/sabbats/sabbat_list_item.dart';
 
-class SabbatList extends StatelessWidget {
-  const SabbatList({super.key});
+class Sabbats extends StatelessWidget {
+  const Sabbats({super.key});
 
   @override
   Widget build(BuildContext context) {

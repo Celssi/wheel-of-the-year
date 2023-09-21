@@ -9,6 +9,7 @@ class BottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(
         builder: (_) => BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
@@ -18,6 +19,16 @@ class BottomNavigation extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: Icon(Icons.list),
                   label: 'Sabbats',
+                  backgroundColor: Colors.white,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.card_giftcard),
+                  label: 'Tarot',
+                  backgroundColor: Colors.white,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: 'Settings',
                   backgroundColor: Colors.white,
                 ),
               ],

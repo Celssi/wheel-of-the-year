@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/helpers/moon_phase_calculator.dart';
-import 'package:witch_army_knife/widgets/moon_phase/moon_widget.dart';
+import 'package:witch_army_knife/pages/home/moon_phase/moon_widget.dart';
 
 class MoonCard extends StatelessWidget {
   const MoonCard({super.key});

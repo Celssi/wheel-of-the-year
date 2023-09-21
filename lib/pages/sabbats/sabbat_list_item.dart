@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:witch_army_knife/helper-widgets/background-container.dart';
+import 'package:witch_army_knife/helper-widgets/content-container.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/sabbat.dart';
-import 'package:witch_army_knife/pages/sabbat_single.dart';
+import 'package:witch_army_knife/pages/sabbats/sabbat_single.dart';
 
 class SabbatListItem extends StatelessWidget {
   const SabbatListItem({
@@ -24,19 +26,9 @@ class SabbatListItem extends StatelessWidget {
       child: Hero(
         tag: sabbat.name,
         child: Card(
-          child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/${sabbat.name}.png'),
-                    fit: BoxFit.cover),
-              ),
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.7),
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                ),
+          child: BackgroundContainer(
+              backgroundImage: 'assets/images/${sabbat.name}.png',
+              child: ContentContainer(
                 child: Column(
                   children: <Widget>[
                     Text(

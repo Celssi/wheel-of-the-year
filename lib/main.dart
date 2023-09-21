@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/api/text_api.dart';
-import 'package:witch_army_knife/pages/home.dart';
+import 'package:witch_army_knife/app-container.dart';
 import 'package:witch_army_knife/stores/data_store.dart';
 
 final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
+
+// pallonpuolisko
+// teema
+// tarot
+// ilmoitukset
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +47,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Witch Army Knife',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           useMaterial3: true,
@@ -55,6 +61,6 @@ class _MyAppState extends State<MyApp> {
             },
           ),
         ),
-        home: const HomePage());
+        home: const AppContainer());
   }
 }
