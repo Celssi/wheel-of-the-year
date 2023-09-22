@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/helpers/moon_phase_calculator.dart';
+import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/pages/home/moon_phase/moon_widget.dart';
 
 class MoonCard extends StatelessWidget {
@@ -29,6 +30,7 @@ class MoonCard extends StatelessWidget {
               resolution: 64,
               size: 48,
               earthShineColor: Colors.blueGrey.shade900,
+              hemisphere: settingsStore.hemisphere,
             ),
             Text(
               getLunarPhase(),

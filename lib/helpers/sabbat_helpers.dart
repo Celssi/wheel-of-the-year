@@ -1,3 +1,4 @@
+import 'package:witch_army_knife/models/hemisphere.dart';
 import 'package:witch_army_knife/models/sabbat.dart';
 import 'package:witch_army_knife/models/season_event.dart';
 
@@ -12,45 +13,103 @@ Map<String, SeasonEvent> seasonEventMap = {
   'Yule': SeasonEvent.yule,
 };
 
-DateTime calculateSeasonEvent(int year, SeasonEvent event) {
-  switch (event) {
-    case SeasonEvent.imbolc:
-      return DateTime.parse('$year-02-01');
-    case SeasonEvent.ostara:
-      return DateTime(year, 3,
-          20 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor());
-    case SeasonEvent.beltane:
-      return DateTime.parse('$year-05-01');
-    case SeasonEvent.litha:
-      return DateTime(year, 6,
-          21 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor());
-    case SeasonEvent.lughnasa:
-      return DateTime.parse('$year-08-01');
-    case SeasonEvent.mabon:
-      return DateTime(year, 9,
-          23 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor());
-    case SeasonEvent.samhain:
-      return DateTime.parse('$year-11-01');
-    case SeasonEvent.yule:
-      return DateTime(year, 12,
-          22 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor());
-    default:
-      throw ArgumentError("Invalid SeasonEvent value");
+DateTime calculateSeasonEvent(int year, SeasonEvent event,
+    {Hemisphere hemisphere = Hemisphere.northern}) {
+  if (hemisphere == Hemisphere.northern) {
+    switch (event) {
+      case SeasonEvent.imbolc:
+        return DateTime.parse('$year-02-01');
+      case SeasonEvent.ostara:
+        return DateTime(
+            year,
+            3,
+            20 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      case SeasonEvent.beltane:
+        return DateTime.parse('$year-05-01');
+      case SeasonEvent.litha:
+        return DateTime(
+            year,
+            6,
+            21 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      case SeasonEvent.lughnasa:
+        return DateTime.parse('$year-08-01');
+      case SeasonEvent.mabon:
+        return DateTime(
+            year,
+            9,
+            23 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      case SeasonEvent.samhain:
+        return DateTime.parse('$year-11-01');
+      case SeasonEvent.yule:
+        return DateTime(
+            year,
+            12,
+            22 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      default:
+        throw ArgumentError("Invalid SeasonEvent value");
+    }
+  } else {
+    switch (event) {
+      case SeasonEvent.lughnasa:
+        return DateTime.parse('$year-02-01');
+      case SeasonEvent.mabon:
+        return DateTime(
+            year,
+            3,
+            20 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      case SeasonEvent.samhain:
+        return DateTime.parse('$year-05-01');
+      case SeasonEvent.yule:
+        return DateTime(
+            year,
+            6,
+            21 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      case SeasonEvent.imbolc:
+        return DateTime.parse('$year-08-01');
+      case SeasonEvent.ostara:
+        return DateTime(
+            year,
+            9,
+            23 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      case SeasonEvent.beltane:
+        return DateTime.parse('$year-11-01');
+      case SeasonEvent.litha:
+        return DateTime(
+            year,
+            12,
+            22 +
+                (0.2422 * (year - 1980)).floor() -
+                ((year - 1980) / 4).floor());
+      default:
+        throw ArgumentError("Invalid SeasonEvent value");
+    }
   }
 }
 
-List<Sabbat> getSabbats() {
+List<Sabbat> getSabbats({Hemisphere hemisphere = Hemisphere.northern}) {
+  print(hemisphere);
   DateTime now = DateTime.now();
-  var sabbats = [
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.imbolc), 'Imbolc'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.ostara), 'Ostara'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.beltane), 'Beltane'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.litha), 'Litha'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.lughnasa), 'Lughnasa'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.mabon), 'Mabon'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.samhain), 'Samhain'),
-    Sabbat(calculateSeasonEvent(now.year, SeasonEvent.yule), 'Yule')
-  ];
+  var sabbats = seasonEventMap.keys
+      .map((sabbatName) => Sabbat(
+            calculateSeasonEvent(now.year, seasonEventMap[sabbatName]!,
+                hemisphere: hemisphere),
+            sabbatName,
+          ))
+      .toList();
 
   for (var i = 0; i < sabbats.length; i++) {
     if (sabbats[i].date.isBefore(now)) {

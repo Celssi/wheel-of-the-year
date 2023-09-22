@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/hemisphere.dart';
 
 part 'settings_store.g.dart';
@@ -14,6 +15,7 @@ class SettingsStore extends SettingsStoreBase with _$SettingsStore {
       showMoonPhase = prefs.getBool('moonPhase') ?? true;
       showNextSabbat = prefs.getBool('nextSabbat') ?? true;
       hemisphere = Hemisphere.values[prefs.getInt('hemisphere') ?? 0];
+      dataStore.loadSabbats(hemisphere);
     });
   }
 }
@@ -47,6 +49,7 @@ abstract class SettingsStoreBase with Store {
     if (value != null) {
       hemisphere = value;
       prefs.setInt('hemisphere', value.index);
+      dataStore.loadSabbats(hemisphere);
       _showUpdatedNotification(context);
     }
   }

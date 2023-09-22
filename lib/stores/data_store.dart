@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:mobx/mobx.dart';
 import 'package:witch_army_knife/helpers/sabbat_helpers.dart';
 import 'package:witch_army_knife/main.dart';
+import 'package:witch_army_knife/models/hemisphere.dart';
 import 'package:witch_army_knife/models/sabbat.dart';
 import 'package:witch_army_knife/models/sabbat_text.dart';
 
@@ -33,7 +34,7 @@ abstract class DataStoreBase with Store {
   }
 
   @observable
-  ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of(getSabbats());
+  ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of([]);
 
   @observable
   SabbatText sabbatText = const SabbatText(name: '', text: '');
@@ -71,6 +72,11 @@ abstract class DataStoreBase with Store {
     isLoading = true;
     sabbatText = await textApi.getText(name);
     isLoading = false;
+  }
+
+  @action
+  void loadSabbats(Hemisphere hemisphere) {
+    sabbats = ObservableList<Sabbat>.of(getSabbats(hemisphere: hemisphere));
   }
 
   @computed

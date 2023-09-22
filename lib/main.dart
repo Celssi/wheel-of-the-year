@@ -4,8 +4,8 @@ import 'package:witch_army_knife/app-container.dart';
 import 'package:witch_army_knife/stores/data_store.dart';
 import 'package:witch_army_knife/stores/settings_store.dart';
 
-final DataStore dataStore = DataStore();
 final SettingsStore settingsStore = SettingsStore();
+final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
 
 // pallonpuolisko

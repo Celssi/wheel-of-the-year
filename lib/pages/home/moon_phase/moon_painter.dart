@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:witch_army_knife/models/hemisphere.dart';
 import 'package:witch_army_knife/pages/home/moon_phase/moon_phase.dart';
 
 class MoonPainter extends CustomPainter {
@@ -43,7 +44,13 @@ class MoonPainter extends CustomPainter {
     double cosTerm = cos(positionAngle);
 
     double rSquared = radius * radius;
-    double whichQuarter = ((positionAngle * 2.0 / pi) + 4) % 4;
+    double whichQuarter = 0;
+
+    if (moonWidget.hemisphere == Hemisphere.southern) {
+      whichQuarter = -((positionAngle * 2.0 / pi) + 4) % 4;
+    } else {
+      whichQuarter = ((positionAngle * 2.0 / pi) + 4) % 4;
+    }
 
     for (int j = 0; j < radius; ++j) {
       double rrf = sqrt(rSquared - j * j);
