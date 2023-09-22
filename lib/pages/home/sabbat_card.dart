@@ -27,7 +27,7 @@ class SabbatCard extends StatelessWidget {
             dataStore.sabbats.isNotEmpty
                 ? dataStore.daysUntilNextSabbat == 0
                     ? 'Today!'
-                    : 'Which is in ${dataStore.daysUntilNextSabbat} days'
+                    : 'Which is in ${dataStore.daysUntilNextSabbat} day(s)'
                 : '-',
             style: const TextStyle(fontSize: 24),
           ),

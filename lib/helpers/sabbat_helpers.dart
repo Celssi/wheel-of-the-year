@@ -1,15 +1,5 @@
 import 'package:witch_army_knife/models/sabbat.dart';
-
-enum SeasonEvent {
-  imbolc,
-  ostara,
-  beltane,
-  litha,
-  lughnasa,
-  mabon,
-  samhain,
-  yule
-}
+import 'package:witch_army_knife/models/season_event.dart';
 
 Map<String, SeasonEvent> seasonEventMap = {
   'Imbolc': SeasonEvent.imbolc,

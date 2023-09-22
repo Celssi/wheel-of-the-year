@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:witch_army_knife/helper-widgets/spinner.dart';
 import 'package:witch_army_knife/main.dart';
-import 'package:witch_army_knife/spinner.dart';
 
 class SabbatSingleContent extends StatelessWidget {
   const SabbatSingleContent({super.key});

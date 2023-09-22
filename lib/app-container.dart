@@ -4,6 +4,7 @@ import 'package:witch_army_knife/helper-widgets/main_scaffold.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/pages/home/home.dart';
 import 'package:witch_army_knife/pages/sabbats/sabbats.dart';
+import 'package:witch_army_knife/pages/settings/settings.dart';
 
 class AppContainer extends StatelessWidget {
   const AppContainer({super.key});
@@ -23,6 +24,8 @@ class AppContainer extends StatelessWidget {
         return const Home();
       case 1:
         return const Sabbats();
+      case 3:
+        return const Settings();
     }
 
     return const Home();

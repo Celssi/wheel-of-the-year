@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:witch_army_knife/api/text_api.dart';
 import 'package:witch_army_knife/app-container.dart';
 import 'package:witch_army_knife/stores/data_store.dart';
+import 'package:witch_army_knife/stores/settings_store.dart';
 
 final DataStore dataStore = DataStore();
+final SettingsStore settingsStore = SettingsStore();
 final TextApi textApi = TextApi();
 
 // pallonpuolisko
@@ -53,6 +55,9 @@ class _MyAppState extends State<MyApp> {
           useMaterial3: true,
           splashColor: Colors.transparent,
           fontFamily: 'Caveat',
+          textTheme: const TextTheme(
+            labelLarge: TextStyle(fontSize: 20),
+          ),
           pageTransitionsTheme: const PageTransitionsTheme(
             builders: <TargetPlatform, PageTransitionsBuilder>{
               TargetPlatform.android: ZoomPageTransitionsBuilder(

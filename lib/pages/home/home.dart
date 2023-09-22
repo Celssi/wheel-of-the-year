@@ -15,12 +15,14 @@ class Home extends StatelessWidget {
             backgroundImage: 'assets/images/${dataStore.closestSabbatName}.png',
             child: ListView(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
-              children: const [
-                SabbatCard(),
-                SizedBox(
-                  height: 20,
-                ),
-                MoonCard()
+              children: [
+                if (settingsStore.showNextSabbat) ...[
+                  const SabbatCard(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+                if (settingsStore.showMoonPhase) const MoonCard(),
               ],
             )));
   }

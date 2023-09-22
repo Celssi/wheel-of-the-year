@@ -94,7 +94,7 @@ abstract class DataStoreBase with Store {
   @computed
   int get daysUntilNextSabbat {
     DateTime now = DateTime.now();
-    return closestSabbat.date.difference(now).inDays;
+    return (closestSabbat.date.difference(now).inHours / 24).ceil();
   }
 
   @computed

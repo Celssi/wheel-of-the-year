@@ -1,0 +1,4 @@
+enum Hemisphere {
+  northern,
+  southern,
+}

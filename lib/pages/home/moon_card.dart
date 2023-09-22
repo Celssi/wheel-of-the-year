@@ -35,7 +35,7 @@ class MoonCard extends StatelessWidget {
               style: const TextStyle(fontSize: 28),
             ),
             Text(
-              'Next full moon is in ${daysUntilFullMoon()} days',
+              'Next full moon is in ${daysUntilFullMoon()} day(s)',
               style: const TextStyle(fontSize: 24),
             ),
           ],
