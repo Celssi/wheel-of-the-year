@@ -8,7 +8,6 @@ final SettingsStore settingsStore = SettingsStore();
 final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
 
-// pallonpuolisko
 // teema
 // tarot
 // ilmoitukset

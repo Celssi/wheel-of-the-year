@@ -34,7 +34,7 @@ abstract class DataStoreBase with Store {
   }
 
   @observable
-  ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of([]);
+  ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of(getSabbats());
 
   @observable
   SabbatText sabbatText = const SabbatText(name: '', text: '');

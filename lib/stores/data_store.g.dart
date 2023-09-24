@@ -161,6 +161,17 @@ mixin _$DataStore on DataStoreBase, Store {
   }
 
   @override
+  void loadSabbats(Hemisphere hemisphere) {
+    final _$actionInfo = _$DataStoreBaseActionController.startAction(
+        name: 'DataStoreBase.loadSabbats');
+    try {
+      return super.loadSabbats(hemisphere);
+    } finally {
+      _$DataStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 sabbats: ${sabbats},

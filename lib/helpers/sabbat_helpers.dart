@@ -101,7 +101,6 @@ DateTime calculateSeasonEvent(int year, SeasonEvent event,
 }
 
 List<Sabbat> getSabbats({Hemisphere hemisphere = Hemisphere.northern}) {
-  print(hemisphere);
   DateTime now = DateTime.now();
   var sabbats = seasonEventMap.keys
       .map((sabbatName) => Sabbat(
