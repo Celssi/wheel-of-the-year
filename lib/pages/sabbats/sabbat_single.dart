@@ -5,7 +5,7 @@ import 'package:witch_army_knife/helper-widgets/check_connection_notification.da
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
 import 'package:witch_army_knife/helper-widgets/main_scaffold.dart';
 import 'package:witch_army_knife/main.dart';
-import 'package:witch_army_knife/pages/sabbats/sabbat_single/sabbat_single_content.dart';
+import 'package:witch_army_knife/pages/sabbats/sabbat_single_content.dart';
 
 class SabbatSingle extends StatelessWidget {
   const SabbatSingle({super.key});

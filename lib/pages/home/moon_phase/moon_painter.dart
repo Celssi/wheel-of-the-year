@@ -7,30 +7,33 @@ import 'package:witch_army_knife/pages/home/moon_phase/moon_phase.dart';
 class MoonPainter extends CustomPainter {
   MoonPainter({required this.moonWidget});
 
-  MoonWidget moonWidget;
+  final MoonWidget moonWidget;
   final Paint paintDark = Paint();
   final Paint paintLight = Paint();
   final MoonPhase moon = MoonPhase();
 
   @override
   void paint(Canvas canvas, Size size) {
-    double radius = moonWidget.resolution;
+    double moonRadius = moonWidget.resolution;
+    double widgetSize = moonWidget.size;
 
-    int width = radius.toInt() * 2;
-    int height = radius.toInt() * 2;
+    // Ensure that the moon radius is within the bounds of the widget
+    if (moonRadius > widgetSize / 2) {
+      moonRadius = widgetSize / 2;
+    }
+
+    double xCenter = size.width / 2;
+    double yCenter = size.height / 2;
     double phaseAngle = moon.getPhaseAngle(moonWidget.date);
-
-    double xCenter = 0;
-    double yCenter = 0;
 
     try {
       paintLight.color = moonWidget.moonColor;
-      canvas.drawCircle(const Offset(0, 1), radius, paintLight);
+      canvas.drawCircle(Offset(xCenter, yCenter), moonRadius, paintLight);
     } catch (e) {
-      radius = min(width, height) * 0.4;
+      moonRadius = min(size.width, size.height) * 0.4;
       paintLight.color = moonWidget.moonColor;
-      Rect oval = Rect.fromLTRB(xCenter - radius, yCenter - radius,
-          xCenter + radius, yCenter + radius);
+      Rect oval = Rect.fromLTRB(xCenter - moonRadius, yCenter - moonRadius,
+          xCenter + moonRadius, yCenter + moonRadius);
       canvas.drawOval(oval, paintLight);
     }
 
@@ -43,16 +46,12 @@ class MoonPainter extends CustomPainter {
 
     double cosTerm = cos(positionAngle);
 
-    double rSquared = radius * radius;
-    double whichQuarter = 0;
+    double rSquared = moonRadius * moonRadius;
+    double whichQuarter = (moonWidget.hemisphere == Hemisphere.southern)
+        ? -((positionAngle * 2.0 / pi) + 4) % 4
+        : ((positionAngle * 2.0 / pi) + 4) % 4;
 
-    if (moonWidget.hemisphere == Hemisphere.southern) {
-      whichQuarter = -((positionAngle * 2.0 / pi) + 4) % 4;
-    } else {
-      whichQuarter = ((positionAngle * 2.0 / pi) + 4) % 4;
-    }
-
-    for (int j = 0; j < radius; ++j) {
+    for (int j = 0; j < moonRadius; ++j) {
       double rrf = sqrt(rSquared - j * j);
       double rr = rrf;
       double xx = rrf * cosTerm;
