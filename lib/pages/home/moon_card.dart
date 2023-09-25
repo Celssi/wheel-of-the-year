@@ -36,11 +36,11 @@ class MoonCard extends StatelessWidget {
                   hemisphere: settingsStore.hemisphere,
                 ),
                 Text(
-                  getLunarPhase(),
+                  getCurrentLunarPhase(),
                   style: const TextStyle(fontSize: 28),
                 ),
                 Text(
-                  'Next full moon is in ${daysUntilFullMoon()} day(s)',
+                  'Next full moon is in ${daysUntilPhase()} day(s)',
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
