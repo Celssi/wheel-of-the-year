@@ -8,6 +8,7 @@ import 'package:witch_army_knife/models/hemisphere.dart';
 import 'package:witch_army_knife/models/sabbat.dart';
 import 'package:witch_army_knife/models/sabbat_text.dart';
 import 'package:witch_army_knife/models/tarot_card.dart';
+import 'package:witch_army_knife/models/tarot_text.dart';
 
 part 'data_store.g.dart';
 
@@ -30,6 +31,8 @@ abstract class DataStoreBase with Store {
 
       if (hasInternet && selectedSabbat != null) {
         getSabbatText(selectedSabbat!.name);
+      } else if (hasInternet && selectedTarotCard != null) {
+        getTarotText(selectedTarotCard!.name);
       }
     });
   }
@@ -41,6 +44,9 @@ abstract class DataStoreBase with Store {
   SabbatText sabbatText = const SabbatText(name: '', text: '');
 
   @observable
+  TarotText tarotText = const TarotText(name: '', text: '', keywords: '');
+
+  @observable
   bool isLoading = false;
 
   @observable
@@ -50,10 +56,13 @@ abstract class DataStoreBase with Store {
   Sabbat? selectedSabbat;
 
   @observable
+  TarotCard? selectedTarotCard;
+
+  @observable
   bool hasInternet = false;
 
   @observable
-  final List<TarotCard> majorArcana = [
+  List<TarotCard> majorArcana = [
     TarotCard("0 Fool", "assets/images/tarot/0_Fool.jpeg"),
     TarotCard("1 The Magician", "assets/images/tarot/1_Magician.jpeg"),
     TarotCard(
@@ -81,7 +90,7 @@ abstract class DataStoreBase with Store {
   ];
 
   @observable
-  final List<TarotCard> wands = [
+  List<TarotCard> wands = [
     TarotCard("Ace of Wands", "assets/images/tarot/Wands01.jpg"),
     TarotCard("Two of Wands", "assets/images/tarot/Wands02.jpg"),
     TarotCard("Three of Wands", "assets/images/tarot/Wands03.jpg"),
@@ -99,7 +108,7 @@ abstract class DataStoreBase with Store {
   ];
 
   @observable
-  final List<TarotCard> swords = [
+  List<TarotCard> swords = [
     TarotCard("Ace of Swords", "assets/images/tarot/Swords01.jpg"),
     TarotCard("Two of Swords", "assets/images/tarot/Swords02.jpg"),
     TarotCard("Three of Swords", "assets/images/tarot/Swords03.jpg"),
@@ -117,7 +126,7 @@ abstract class DataStoreBase with Store {
   ];
 
   @observable
-  final List<TarotCard> pentacles = [
+  List<TarotCard> pentacles = [
     TarotCard("Ace of Pentacles", "assets/images/tarot/Pents01.jpg"),
     TarotCard("Two of Pentacles", "assets/images/tarot/Pents02.jpg"),
     TarotCard("Three of Pentacles", "assets/images/tarot/Pents03.jpg"),
@@ -135,7 +144,7 @@ abstract class DataStoreBase with Store {
   ];
 
   @observable
-  final List<TarotCard> cups = [
+  List<TarotCard> cups = [
     TarotCard("Ace of Cups", "assets/images/tarot/Cups01.jpg"),
     TarotCard("Two of Cups", "assets/images/tarot/Cups02.jpg"),
     TarotCard("Three of Cups", "assets/images/tarot/Cups03.jpg"),
@@ -169,9 +178,25 @@ abstract class DataStoreBase with Store {
   }
 
   @action
+  void setSelectedTarotCard(TarotCard tarotCard) {
+    selectedTarotCard = tarotCard;
+
+    if (hasInternet) {
+      getTarotText(tarotCard.name);
+    }
+  }
+
+  @action
   Future getSabbatText(String name) async {
     isLoading = true;
-    sabbatText = await textApi.getText(name);
+    sabbatText = await textApi.getSabbatText(name);
+    isLoading = false;
+  }
+
+  @action
+  Future getTarotText(String name) async {
+    isLoading = true;
+    tarotText = await textApi.getTarotText(name);
     isLoading = false;
   }
 

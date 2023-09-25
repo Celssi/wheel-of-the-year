@@ -63,6 +63,22 @@ mixin _$DataStore on DataStoreBase, Store {
     });
   }
 
+  late final _$tarotTextAtom =
+      Atom(name: 'DataStoreBase.tarotText', context: context);
+
+  @override
+  TarotText get tarotText {
+    _$tarotTextAtom.reportRead();
+    return super.tarotText;
+  }
+
+  @override
+  set tarotText(TarotText value) {
+    _$tarotTextAtom.reportWrite(value, super.tarotText, () {
+      super.tarotText = value;
+    });
+  }
+
   late final _$isLoadingAtom =
       Atom(name: 'DataStoreBase.isLoading', context: context);
 
@@ -111,6 +127,22 @@ mixin _$DataStore on DataStoreBase, Store {
     });
   }
 
+  late final _$selectedTarotCardAtom =
+      Atom(name: 'DataStoreBase.selectedTarotCard', context: context);
+
+  @override
+  TarotCard? get selectedTarotCard {
+    _$selectedTarotCardAtom.reportRead();
+    return super.selectedTarotCard;
+  }
+
+  @override
+  set selectedTarotCard(TarotCard? value) {
+    _$selectedTarotCardAtom.reportWrite(value, super.selectedTarotCard, () {
+      super.selectedTarotCard = value;
+    });
+  }
+
   late final _$hasInternetAtom =
       Atom(name: 'DataStoreBase.hasInternet', context: context);
 
@@ -127,12 +159,98 @@ mixin _$DataStore on DataStoreBase, Store {
     });
   }
 
+  late final _$majorArcanaAtom =
+      Atom(name: 'DataStoreBase.majorArcana', context: context);
+
+  @override
+  List<TarotCard> get majorArcana {
+    _$majorArcanaAtom.reportRead();
+    return super.majorArcana;
+  }
+
+  @override
+  set majorArcana(List<TarotCard> value) {
+    _$majorArcanaAtom.reportWrite(value, super.majorArcana, () {
+      super.majorArcana = value;
+    });
+  }
+
+  late final _$wandsAtom = Atom(name: 'DataStoreBase.wands', context: context);
+
+  @override
+  List<TarotCard> get wands {
+    _$wandsAtom.reportRead();
+    return super.wands;
+  }
+
+  @override
+  set wands(List<TarotCard> value) {
+    _$wandsAtom.reportWrite(value, super.wands, () {
+      super.wands = value;
+    });
+  }
+
+  late final _$swordsAtom =
+      Atom(name: 'DataStoreBase.swords', context: context);
+
+  @override
+  List<TarotCard> get swords {
+    _$swordsAtom.reportRead();
+    return super.swords;
+  }
+
+  @override
+  set swords(List<TarotCard> value) {
+    _$swordsAtom.reportWrite(value, super.swords, () {
+      super.swords = value;
+    });
+  }
+
+  late final _$pentaclesAtom =
+      Atom(name: 'DataStoreBase.pentacles', context: context);
+
+  @override
+  List<TarotCard> get pentacles {
+    _$pentaclesAtom.reportRead();
+    return super.pentacles;
+  }
+
+  @override
+  set pentacles(List<TarotCard> value) {
+    _$pentaclesAtom.reportWrite(value, super.pentacles, () {
+      super.pentacles = value;
+    });
+  }
+
+  late final _$cupsAtom = Atom(name: 'DataStoreBase.cups', context: context);
+
+  @override
+  List<TarotCard> get cups {
+    _$cupsAtom.reportRead();
+    return super.cups;
+  }
+
+  @override
+  set cups(List<TarotCard> value) {
+    _$cupsAtom.reportWrite(value, super.cups, () {
+      super.cups = value;
+    });
+  }
+
   late final _$getSabbatTextAsyncAction =
       AsyncAction('DataStoreBase.getSabbatText', context: context);
 
   @override
   Future<dynamic> getSabbatText(String name) {
     return _$getSabbatTextAsyncAction.run(() => super.getSabbatText(name));
+  }
+
+  late final _$getTarotTextAsyncAction =
+      AsyncAction('DataStoreBase.getTarotText', context: context);
+
+  @override
+  Future<dynamic> getTarotText(String name) {
+    return _$getTarotTextAsyncAction.run(() => super.getTarotText(name));
   }
 
   late final _$DataStoreBaseActionController =
@@ -161,6 +279,17 @@ mixin _$DataStore on DataStoreBase, Store {
   }
 
   @override
+  void setSelectedTarotCard(TarotCard tarotCard) {
+    final _$actionInfo = _$DataStoreBaseActionController.startAction(
+        name: 'DataStoreBase.setSelectedTarotCard');
+    try {
+      return super.setSelectedTarotCard(tarotCard);
+    } finally {
+      _$DataStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void loadSabbats(Hemisphere hemisphere) {
     final _$actionInfo = _$DataStoreBaseActionController.startAction(
         name: 'DataStoreBase.loadSabbats');
@@ -176,10 +305,17 @@ mixin _$DataStore on DataStoreBase, Store {
     return '''
 sabbats: ${sabbats},
 sabbatText: ${sabbatText},
+tarotText: ${tarotText},
 isLoading: ${isLoading},
 selectedTab: ${selectedTab},
 selectedSabbat: ${selectedSabbat},
+selectedTarotCard: ${selectedTarotCard},
 hasInternet: ${hasInternet},
+majorArcana: ${majorArcana},
+wands: ${wands},
+swords: ${swords},
+pentacles: ${pentacles},
+cups: ${cups},
 closestSabbat: ${closestSabbat},
 daysUntilNextSabbat: ${daysUntilNextSabbat},
 closestSabbatName: ${closestSabbatName}
