@@ -14,6 +14,7 @@ class SettingsStore extends SettingsStoreBase with _$SettingsStore {
       prefs = value;
       showMoonPhase = prefs.getBool('moonPhase') ?? true;
       showNextSabbat = prefs.getBool('nextSabbat') ?? true;
+      showCardOfTheDay = prefs.getBool('cardOfTheDay') ?? true;
       hemisphere = Hemisphere.values[prefs.getInt('hemisphere') ?? 0];
       dataStore.loadSabbats(hemisphere);
     });
@@ -30,6 +31,9 @@ abstract class SettingsStoreBase with Store {
   @observable
   bool showNextSabbat = true;
 
+  @observable
+  bool showCardOfTheDay = true;
+
   @action
   void setShowMoonPhase(bool value, BuildContext context) {
     showMoonPhase = value;
@@ -41,6 +45,13 @@ abstract class SettingsStoreBase with Store {
   void setShowNextSabbat(bool value, BuildContext context) {
     showNextSabbat = value;
     prefs.setBool('nextSabbath', value);
+    _showUpdatedNotification(context);
+  }
+
+  @action
+  void setShowCardOfTheDay(bool value, BuildContext context) {
+    showCardOfTheDay = value;
+    prefs.setBool('cardOfTheDay', value);
     _showUpdatedNotification(context);
   }
 

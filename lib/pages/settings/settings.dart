@@ -57,6 +57,18 @@ class Settings extends StatelessWidget {
                           settingsStore.setShowNextSabbat(value, context);
                         },
                       ),
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        value: settingsStore.showCardOfTheDay,
+                        title: const Text(
+                          'Show card of the day',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        activeColor: Colors.red,
+                        onChanged: (bool value) {
+                          settingsStore.setShowCardOfTheDay(value, context);
+                        },
+                      ),
                       const Divider(
                         height: 30,
                         thickness: 1,

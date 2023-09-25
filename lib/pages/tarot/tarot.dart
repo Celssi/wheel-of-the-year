@@ -16,35 +16,35 @@ class Tarot extends StatelessWidget {
             child: ListView(children: [
               getHeaderBox(title: 'Major Arcana'),
               const SizedBox(height: 10),
-              SuiteContainer(dataStore.majorArcana),
+              SuiteContainer(dataStore.tarotDeck.majorArcana),
               const Divider(
                 height: 50,
                 thickness: 5,
               ),
               getHeaderBox(title: 'Wands'),
               const SizedBox(height: 10),
-              SuiteContainer(dataStore.wands),
+              SuiteContainer(dataStore.tarotDeck.wands),
               const Divider(
                 height: 50,
                 thickness: 5,
               ),
               getHeaderBox(title: 'Cups'),
               const SizedBox(height: 10),
-              SuiteContainer(dataStore.cups),
+              SuiteContainer(dataStore.tarotDeck.cups),
               const Divider(
                 height: 50,
                 thickness: 5,
               ),
               getHeaderBox(title: 'Swords'),
               const SizedBox(height: 10),
-              SuiteContainer(dataStore.swords),
+              SuiteContainer(dataStore.tarotDeck.swords),
               const Divider(
                 height: 50,
                 thickness: 5,
               ),
               getHeaderBox(title: 'Pentacles'),
               const SizedBox(height: 10),
-              SuiteContainer(dataStore.pentacles),
+              SuiteContainer(dataStore.tarotDeck.pentacles),
             ])));
   }
 

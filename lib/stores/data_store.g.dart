@@ -30,6 +30,13 @@ mixin _$DataStore on DataStoreBase, Store {
           Computed<String>(() => super.closestSabbatName,
               name: 'DataStoreBase.closestSabbatName'))
       .value;
+  Computed<TarotCard>? _$cardOfTheDayComputed;
+
+  @override
+  TarotCard get cardOfTheDay =>
+      (_$cardOfTheDayComputed ??= Computed<TarotCard>(() => super.cardOfTheDay,
+              name: 'DataStoreBase.cardOfTheDay'))
+          .value;
 
   late final _$sabbatsAtom =
       Atom(name: 'DataStoreBase.sabbats', context: context);
@@ -76,6 +83,22 @@ mixin _$DataStore on DataStoreBase, Store {
   set tarotText(TarotText value) {
     _$tarotTextAtom.reportWrite(value, super.tarotText, () {
       super.tarotText = value;
+    });
+  }
+
+  late final _$cardOfTheDayTextAtom =
+      Atom(name: 'DataStoreBase.cardOfTheDayText', context: context);
+
+  @override
+  TarotText get cardOfTheDayText {
+    _$cardOfTheDayTextAtom.reportRead();
+    return super.cardOfTheDayText;
+  }
+
+  @override
+  set cardOfTheDayText(TarotText value) {
+    _$cardOfTheDayTextAtom.reportWrite(value, super.cardOfTheDayText, () {
+      super.cardOfTheDayText = value;
     });
   }
 
@@ -159,81 +182,19 @@ mixin _$DataStore on DataStoreBase, Store {
     });
   }
 
-  late final _$majorArcanaAtom =
-      Atom(name: 'DataStoreBase.majorArcana', context: context);
+  late final _$tarotDeckAtom =
+      Atom(name: 'DataStoreBase.tarotDeck', context: context);
 
   @override
-  List<TarotCard> get majorArcana {
-    _$majorArcanaAtom.reportRead();
-    return super.majorArcana;
+  TarotDeck get tarotDeck {
+    _$tarotDeckAtom.reportRead();
+    return super.tarotDeck;
   }
 
   @override
-  set majorArcana(List<TarotCard> value) {
-    _$majorArcanaAtom.reportWrite(value, super.majorArcana, () {
-      super.majorArcana = value;
-    });
-  }
-
-  late final _$wandsAtom = Atom(name: 'DataStoreBase.wands', context: context);
-
-  @override
-  List<TarotCard> get wands {
-    _$wandsAtom.reportRead();
-    return super.wands;
-  }
-
-  @override
-  set wands(List<TarotCard> value) {
-    _$wandsAtom.reportWrite(value, super.wands, () {
-      super.wands = value;
-    });
-  }
-
-  late final _$swordsAtom =
-      Atom(name: 'DataStoreBase.swords', context: context);
-
-  @override
-  List<TarotCard> get swords {
-    _$swordsAtom.reportRead();
-    return super.swords;
-  }
-
-  @override
-  set swords(List<TarotCard> value) {
-    _$swordsAtom.reportWrite(value, super.swords, () {
-      super.swords = value;
-    });
-  }
-
-  late final _$pentaclesAtom =
-      Atom(name: 'DataStoreBase.pentacles', context: context);
-
-  @override
-  List<TarotCard> get pentacles {
-    _$pentaclesAtom.reportRead();
-    return super.pentacles;
-  }
-
-  @override
-  set pentacles(List<TarotCard> value) {
-    _$pentaclesAtom.reportWrite(value, super.pentacles, () {
-      super.pentacles = value;
-    });
-  }
-
-  late final _$cupsAtom = Atom(name: 'DataStoreBase.cups', context: context);
-
-  @override
-  List<TarotCard> get cups {
-    _$cupsAtom.reportRead();
-    return super.cups;
-  }
-
-  @override
-  set cups(List<TarotCard> value) {
-    _$cupsAtom.reportWrite(value, super.cups, () {
-      super.cups = value;
+  set tarotDeck(TarotDeck value) {
+    _$tarotDeckAtom.reportWrite(value, super.tarotDeck, () {
+      super.tarotDeck = value;
     });
   }
 
@@ -306,19 +267,17 @@ mixin _$DataStore on DataStoreBase, Store {
 sabbats: ${sabbats},
 sabbatText: ${sabbatText},
 tarotText: ${tarotText},
+cardOfTheDayText: ${cardOfTheDayText},
 isLoading: ${isLoading},
 selectedTab: ${selectedTab},
 selectedSabbat: ${selectedSabbat},
 selectedTarotCard: ${selectedTarotCard},
 hasInternet: ${hasInternet},
-majorArcana: ${majorArcana},
-wands: ${wands},
-swords: ${swords},
-pentacles: ${pentacles},
-cups: ${cups},
+tarotDeck: ${tarotDeck},
 closestSabbat: ${closestSabbat},
 daysUntilNextSabbat: ${daysUntilNextSabbat},
-closestSabbatName: ${closestSabbatName}
+closestSabbatName: ${closestSabbatName},
+cardOfTheDay: ${cardOfTheDay}
     ''';
   }
 }
