@@ -27,8 +27,12 @@ class MoonSingleContent extends StatelessWidget {
     Map<String, DateTime> sortedDates = Map.fromEntries(sortedList);
 
     sortedDates.forEach((key, value) {
-      widgets.add(Text('Next $key: ${value.day}.${value.month}.${value.year}',
-          style: const TextStyle(fontSize: 28)));
+      widgets.add(
+        Text(
+          'Next $key: ${value.day}.${value.month}.${value.year}',
+          style: const TextStyle(fontSize: 28),
+        ),
+      );
     });
 
     return widgets;
