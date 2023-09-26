@@ -22,7 +22,7 @@ class BottomNavigation extends StatelessWidget {
                   backgroundColor: Colors.white,
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.card_giftcard),
+                  icon: Icon(Icons.web_stories),
                   label: 'Tarot',
                   backgroundColor: Colors.white,
                 ),
