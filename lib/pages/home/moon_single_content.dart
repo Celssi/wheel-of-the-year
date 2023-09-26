@@ -21,8 +21,7 @@ class MoonSingleContent extends StatelessWidget {
       unsortedDates[getLunarPhaseLabel(phaseName)] = nextDate;
     }
 
-    List<MapEntry<String, DateTime>> sortedList =
-        unsortedDates.entries.toList();
+    List<MapEntry<String, DateTime>> sortedList = unsortedDates.entries.toList();
     sortedList.sort((a, b) => a.value.compareTo(b.value));
     Map<String, DateTime> sortedDates = Map.fromEntries(sortedList);
 
