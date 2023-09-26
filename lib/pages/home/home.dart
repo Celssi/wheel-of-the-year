@@ -12,26 +12,28 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-        builder: (_) => BackgroundContainer(
-            backgroundImage: 'assets/images/${dataStore.closestSabbatName}.png',
-            child: ListView(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, top: 32, bottom: 32),
-              children: [
-                if (settingsStore.showNextSabbat) ...[
-                  const SabbatCard(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                ],
-                if (settingsStore.showMoonPhase) ...[
-                  const MoonCard(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                ],
-                if (settingsStore.showCardOfTheDay) const TarotCard(),
-              ],
-            )));
+      builder: (_) => BackgroundContainer(
+        backgroundImage: 'assets/images/${dataStore.closestSabbatName}.png',
+        child: ListView(
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 32),
+          children: [
+            if (settingsStore.showNextSabbat) ...[
+              const SabbatCard(),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+            if (settingsStore.showMoonPhase) ...[
+              const MoonCard(),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+            if (settingsStore.showCardOfTheDay) const TarotCard(),
+          ],
+        ),
+      ),
+    );
   }
 }

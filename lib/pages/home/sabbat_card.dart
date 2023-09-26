@@ -9,36 +9,37 @@ class SabbatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        splashColor: Colors.red,
-        onTap: () {
-          dataStore.setSelectedSabbat(dataStore.closestSabbat);
-          Navigator.of(context).push(MaterialPageRoute(
+      splashColor: Colors.red,
+      onTap: () {
+        dataStore.setSelectedSabbat(dataStore.closestSabbat);
+        Navigator.of(context).push(
+          MaterialPageRoute(
             builder: (context) => const SabbatSingle(),
-          ));
-        },
-        child: ContentContainer(
-          child: Column(
-            children: <Widget>[
-              const Text(
-                'The next sabbat is',
-                style: TextStyle(fontSize: 35),
-              ),
-              Text(
-                dataStore.sabbats.isNotEmpty
-                    ? dataStore.closestSabbat.name
-                    : '-',
-                style: const TextStyle(fontSize: 48),
-              ),
-              Text(
-                dataStore.sabbats.isNotEmpty
-                    ? dataStore.daysUntilNextSabbat == 0
-                        ? 'Which is today! 🥳'
-                        : 'Which is in ${dataStore.daysUntilNextSabbat} day(s)'
-                    : '-',
-                style: const TextStyle(fontSize: 24),
-              ),
-            ],
           ),
-        ));
+        );
+      },
+      child: ContentContainer(
+        child: Column(
+          children: <Widget>[
+            const Text(
+              'The next sabbat is',
+              style: TextStyle(fontSize: 35),
+            ),
+            Text(
+              dataStore.sabbats.isNotEmpty ? dataStore.closestSabbat.name : '-',
+              style: const TextStyle(fontSize: 48),
+            ),
+            Text(
+              dataStore.sabbats.isNotEmpty
+                  ? dataStore.daysUntilNextSabbat == 0
+                      ? 'Which is today! 🥳'
+                      : 'Which is in ${dataStore.daysUntilNextSabbat} day(s)'
+                  : '-',
+              style: const TextStyle(fontSize: 24),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

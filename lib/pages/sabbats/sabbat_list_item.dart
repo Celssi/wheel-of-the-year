@@ -19,29 +19,32 @@ class SabbatListItem extends StatelessWidget {
       splashColor: Colors.red,
       onTap: () {
         dataStore.setSelectedSabbat(sabbat);
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const SabbatSingle(),
-        ));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const SabbatSingle(),
+          ),
+        );
       },
       child: Hero(
         tag: sabbat.name,
         child: Card(
           child: BackgroundContainer(
-              backgroundImage: 'assets/images/${sabbat.name}.png',
-              child: ContentContainer(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      sabbat.name,
-                      style: const TextStyle(fontSize: 48),
-                    ),
-                    Text(
-                      '${sabbat.date.day}.${sabbat.date.month}.${sabbat.date.year}',
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                  ],
-                ),
-              )),
+            backgroundImage: 'assets/images/${sabbat.name}.png',
+            child: ContentContainer(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    sabbat.name,
+                    style: const TextStyle(fontSize: 48),
+                  ),
+                  Text(
+                    '${sabbat.date.day}.${sabbat.date.month}.${sabbat.date.year}',
+                    style: const TextStyle(fontSize: 24),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

@@ -14,10 +14,12 @@ class MoonSingle extends StatelessWidget {
     return MainScaffold(
       body: Observer(
         builder: (_) => Card(
-            child: BackgroundContainer(
-                backgroundImage:
-                    'assets/images/${dataStore.selectedSabbat?.name}.png',
-                child: const ContentContainer(child: MoonSingleContent()))),
+          child: BackgroundContainer(
+            backgroundImage:
+                'assets/images/${dataStore.selectedSabbat?.name}.png',
+            child: const ContentContainer(child: MoonSingleContent()),
+          ),
+        ),
       ),
       showBottomButtons: false,
     );

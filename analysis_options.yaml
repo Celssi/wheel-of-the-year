@@ -24,3 +24,4 @@ linter:
     unawaited_futures: true
     await_only_futures: true
     use_super_parameters: true
+    require_trailing_commas: true

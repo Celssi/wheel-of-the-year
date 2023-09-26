@@ -13,10 +13,12 @@ class AppContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-        body: Observer(
-            builder: (_) =>
-                Container(child: getActiveWidget(dataStore.selectedTab))),
-        showBottomButtons: true);
+      body: Observer(
+        builder: (_) =>
+            Container(child: getActiveWidget(dataStore.selectedTab)),
+      ),
+      showBottomButtons: true,
+    );
   }
 
   Widget getActiveWidget(int index) {

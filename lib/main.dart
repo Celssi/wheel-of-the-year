@@ -47,24 +47,25 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Witch Army Knife',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
-          useMaterial3: true,
-          splashColor: Colors.transparent,
-          fontFamily: 'Caveat',
-          textTheme: const TextTheme(
-            labelLarge: TextStyle(fontSize: 20),
-          ),
-          pageTransitionsTheme: const PageTransitionsTheme(
-            builders: <TargetPlatform, PageTransitionsBuilder>{
-              TargetPlatform.android: ZoomPageTransitionsBuilder(
-                allowEnterRouteSnapshotting: false,
-              ),
-            },
-          ),
+      title: 'Witch Army Knife',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        useMaterial3: true,
+        splashColor: Colors.transparent,
+        fontFamily: 'Caveat',
+        textTheme: const TextTheme(
+          labelLarge: TextStyle(fontSize: 20),
         ),
-        home: const AppContainer());
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: ZoomPageTransitionsBuilder(
+              allowEnterRouteSnapshotting: false,
+            ),
+          },
+        ),
+      ),
+      home: const AppContainer(),
+    );
   }
 }

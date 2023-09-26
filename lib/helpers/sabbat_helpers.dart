@@ -13,46 +13,45 @@ Map<String, SeasonEvent> seasonEventMap = {
   'Yule': SeasonEvent.yule,
 };
 
-DateTime calculateSeasonEvent(int year, SeasonEvent event,
-    {Hemisphere hemisphere = Hemisphere.northern}) {
+DateTime calculateSeasonEvent(
+  int year,
+  SeasonEvent event, {
+  Hemisphere hemisphere = Hemisphere.northern,
+}) {
   if (hemisphere == Hemisphere.northern) {
     switch (event) {
       case SeasonEvent.imbolc:
         return DateTime.parse('$year-02-01');
       case SeasonEvent.ostara:
         return DateTime(
-            year,
-            3,
-            20 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          3,
+          20 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       case SeasonEvent.beltane:
         return DateTime.parse('$year-05-01');
       case SeasonEvent.litha:
         return DateTime(
-            year,
-            6,
-            21 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          6,
+          21 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       case SeasonEvent.lughnasa:
         return DateTime.parse('$year-08-01');
       case SeasonEvent.mabon:
         return DateTime(
-            year,
-            9,
-            23 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          9,
+          23 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       case SeasonEvent.samhain:
         return DateTime.parse('$year-11-01');
       case SeasonEvent.yule:
         return DateTime(
-            year,
-            12,
-            22 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          12,
+          22 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       default:
         throw ArgumentError("Invalid SeasonEvent value");
     }
@@ -62,38 +61,34 @@ DateTime calculateSeasonEvent(int year, SeasonEvent event,
         return DateTime.parse('$year-02-01');
       case SeasonEvent.mabon:
         return DateTime(
-            year,
-            3,
-            20 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          3,
+          20 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       case SeasonEvent.samhain:
         return DateTime.parse('$year-05-01');
       case SeasonEvent.yule:
         return DateTime(
-            year,
-            6,
-            21 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          6,
+          21 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       case SeasonEvent.imbolc:
         return DateTime.parse('$year-08-01');
       case SeasonEvent.ostara:
         return DateTime(
-            year,
-            9,
-            23 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          9,
+          23 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       case SeasonEvent.beltane:
         return DateTime.parse('$year-11-01');
       case SeasonEvent.litha:
         return DateTime(
-            year,
-            12,
-            22 +
-                (0.2422 * (year - 1980)).floor() -
-                ((year - 1980) / 4).floor());
+          year,
+          12,
+          22 + (0.2422 * (year - 1980)).floor() - ((year - 1980) / 4).floor(),
+        );
       default:
         throw ArgumentError("Invalid SeasonEvent value");
     }
@@ -103,11 +98,16 @@ DateTime calculateSeasonEvent(int year, SeasonEvent event,
 List<Sabbat> getSabbats({Hemisphere hemisphere = Hemisphere.northern}) {
   DateTime now = DateTime.now();
   var sabbats = seasonEventMap.keys
-      .map((sabbatName) => Sabbat(
-            calculateSeasonEvent(now.year, seasonEventMap[sabbatName]!,
-                hemisphere: hemisphere),
-            sabbatName,
-          ))
+      .map(
+        (sabbatName) => Sabbat(
+          calculateSeasonEvent(
+            now.year,
+            seasonEventMap[sabbatName]!,
+            hemisphere: hemisphere,
+          ),
+          sabbatName,
+        ),
+      )
       .toList();
 
   for (var i = 0; i < sabbats.length; i++) {

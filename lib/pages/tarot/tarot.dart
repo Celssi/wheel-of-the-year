@@ -11,53 +11,58 @@ class Tarot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-        builder: (_) => BackgroundContainer(
-            backgroundImage: 'assets/images/${dataStore.closestSabbatName}.png',
-            child: ListView(children: [
-              getHeaderBox(title: 'Major Arcana'),
-              const SizedBox(height: 10),
-              SuiteContainer(dataStore.tarotDeck.majorArcana),
-              const Divider(
-                height: 50,
-                thickness: 5,
-              ),
-              getHeaderBox(title: 'Wands'),
-              const SizedBox(height: 10),
-              SuiteContainer(dataStore.tarotDeck.wands),
-              const Divider(
-                height: 50,
-                thickness: 5,
-              ),
-              getHeaderBox(title: 'Cups'),
-              const SizedBox(height: 10),
-              SuiteContainer(dataStore.tarotDeck.cups),
-              const Divider(
-                height: 50,
-                thickness: 5,
-              ),
-              getHeaderBox(title: 'Swords'),
-              const SizedBox(height: 10),
-              SuiteContainer(dataStore.tarotDeck.swords),
-              const Divider(
-                height: 50,
-                thickness: 5,
-              ),
-              getHeaderBox(title: 'Pentacles'),
-              const SizedBox(height: 10),
-              SuiteContainer(dataStore.tarotDeck.pentacles),
-            ])));
+      builder: (_) => BackgroundContainer(
+        backgroundImage: 'assets/images/${dataStore.closestSabbatName}.png',
+        child: ListView(
+          children: [
+            getHeaderBox(title: 'Major Arcana'),
+            const SizedBox(height: 10),
+            SuiteContainer(dataStore.tarotDeck.majorArcana),
+            const Divider(
+              height: 50,
+              thickness: 5,
+            ),
+            getHeaderBox(title: 'Wands'),
+            const SizedBox(height: 10),
+            SuiteContainer(dataStore.tarotDeck.wands),
+            const Divider(
+              height: 50,
+              thickness: 5,
+            ),
+            getHeaderBox(title: 'Cups'),
+            const SizedBox(height: 10),
+            SuiteContainer(dataStore.tarotDeck.cups),
+            const Divider(
+              height: 50,
+              thickness: 5,
+            ),
+            getHeaderBox(title: 'Swords'),
+            const SizedBox(height: 10),
+            SuiteContainer(dataStore.tarotDeck.swords),
+            const Divider(
+              height: 50,
+              thickness: 5,
+            ),
+            getHeaderBox(title: 'Pentacles'),
+            const SizedBox(height: 10),
+            SuiteContainer(dataStore.tarotDeck.pentacles),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget getHeaderBox({required String title}) {
     return SizedBox(
       width: double.infinity,
       child: ContentContainer(
-          child: Center(
-        child: Text(
-          title,
-          style: const TextStyle(fontSize: 40),
+        child: Center(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 40),
+          ),
         ),
-      )),
+      ),
     );
   }
 }

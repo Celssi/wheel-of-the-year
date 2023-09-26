@@ -63,7 +63,7 @@ class MoonSingleContent extends StatelessWidget {
               date: DateTime(now.year, now.month, now.day),
             ),
           ),
-          ..._getNextDatesTexts()
+          ..._getNextDatesTexts(),
         ],
       ),
     );

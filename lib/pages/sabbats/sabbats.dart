@@ -9,9 +9,10 @@ class Sabbats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-        builder: (_) => ListView(
-              children: getCards(),
-            ));
+      builder: (_) => ListView(
+        children: getCards(),
+      ),
+    );
   }
 
   List<Widget> getCards() {

@@ -12,7 +12,7 @@ class CheckConnectionNotification extends StatelessWidget {
         Text(
           'Please check your connection',
           style: TextStyle(fontSize: 24),
-        )
+        ),
       ],
     );
   }

@@ -14,56 +14,58 @@ class SuiteContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-        builder: (_) => BackgroundContainer(
-              backgroundImage:
-                  'assets/images/${dataStore.closestSabbatName}.png',
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: cards.length,
-                itemBuilder: (context, index) {
-                  final tarotCard = cards[index];
+      builder: (_) => BackgroundContainer(
+        backgroundImage: 'assets/images/${dataStore.closestSabbatName}.png',
+        child: GridView.builder(
+          shrinkWrap: true,
+          physics: const ScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemCount: cards.length,
+          itemBuilder: (context, index) {
+            final tarotCard = cards[index];
 
-                  return InkWell(
-                    splashColor: Colors.red,
-                    onTap: () {
-                      dataStore.setSelectedTarotCard(tarotCard);
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const TarotSingle(),
-                      ));
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      child: ContentContainer(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              // Adjust the radius as needed
-                              child: Image.asset(
-                                tarotCard.imagePath,
-                                height: 110,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              tarotCard.name,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+            return InkWell(
+              splashColor: Colors.red,
+              onTap: () {
+                dataStore.setSelectedTarotCard(tarotCard);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const TarotSingle(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                child: ContentContainer(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        // Adjust the radius as needed
+                        child: Image.asset(
+                          tarotCard.imagePath,
+                          height: 110,
                         ),
                       ),
-                    ),
-                  );
-                },
+                      const SizedBox(height: 10),
+                      Text(
+                        tarotCard.name,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ));
+            );
+          },
+        ),
+      ),
+    );
   }
 }

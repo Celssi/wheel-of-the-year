@@ -32,11 +32,14 @@ class MoonPainter extends CustomPainter {
     } catch (e) {
       moonRadius = min(size.width, size.height) * 0.4;
       paintLight.color = moonWidget.moonColor;
-      Rect oval = Rect.fromLTRB(xCenter - moonRadius, yCenter - moonRadius,
-          xCenter + moonRadius, yCenter + moonRadius);
+      Rect oval = Rect.fromLTRB(
+        xCenter - moonRadius,
+        yCenter - moonRadius,
+        xCenter + moonRadius,
+        yCenter + moonRadius,
+      );
       canvas.drawOval(oval, paintLight);
     }
-
     double positionAngle = pi - phaseAngle;
     if (positionAngle < 0.0) {
       positionAngle += 2.0 * pi;
@@ -58,9 +61,13 @@ class MoonPainter extends CustomPainter {
       double x1 = xCenter - (whichQuarter < 2 ? rr : xx);
       double w = rr + xx;
       canvas.drawRect(
-          Rect.fromLTRB(x1, yCenter - j, w + x1, yCenter - j + 2), paintDark);
+        Rect.fromLTRB(x1, yCenter - j, w + x1, yCenter - j + 2),
+        paintDark,
+      );
       canvas.drawRect(
-          Rect.fromLTRB(x1, yCenter + j, w + x1, yCenter + j + 2), paintDark);
+        Rect.fromLTRB(x1, yCenter + j, w + x1, yCenter + j + 2),
+        paintDark,
+      );
     }
   }
 

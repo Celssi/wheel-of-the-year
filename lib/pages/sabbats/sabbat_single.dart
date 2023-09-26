@@ -16,14 +16,18 @@ class SabbatSingle extends StatelessWidget {
       body: Hero(
         tag: dataStore.selectedSabbat?.name ?? '',
         child: Observer(
-            builder: (_) => Card(
-                child: BackgroundContainer(
-                    backgroundImage:
-                        'assets/images/${dataStore.selectedSabbat?.name}.png',
-                    child: ContentContainer(
-                        child: dataStore.hasInternet
-                            ? const SabbatSingleContent()
-                            : const CheckConnectionNotification())))),
+          builder: (_) => Card(
+            child: BackgroundContainer(
+              backgroundImage:
+                  'assets/images/${dataStore.selectedSabbat?.name}.png',
+              child: ContentContainer(
+                child: dataStore.hasInternet
+                    ? const SabbatSingleContent()
+                    : const CheckConnectionNotification(),
+              ),
+            ),
+          ),
+        ),
       ),
       showBottomButtons: false,
     );

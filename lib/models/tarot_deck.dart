@@ -7,7 +7,9 @@ class TarotDeck {
     TarotCard("0 Fool", "assets/images/tarot/0_Fool.jpeg"),
     TarotCard("1 The Magician", "assets/images/tarot/1_Magician.jpeg"),
     TarotCard(
-        "2 The High Priestess", "assets/images/tarot/2_High_Priestess.jpeg"),
+      "2 The High Priestess",
+      "assets/images/tarot/2_High_Priestess.jpeg",
+    ),
     TarotCard("3 The Empress", "assets/images/tarot/3_Empress.jpeg"),
     TarotCard("4 The Emperor", "assets/images/tarot/4_Emperor.jpeg"),
     TarotCard("5 The Hierophant", "assets/images/tarot/5_Hierophant.jpeg"),
@@ -16,7 +18,9 @@ class TarotDeck {
     TarotCard("8 Strength", "assets/images/tarot/8_Strength.jpeg"),
     TarotCard("9 The Hermit", "assets/images/tarot/9_Hermit.jpeg"),
     TarotCard(
-        "10 Wheel of Fortune", "assets/images/tarot/10_Wheel_of_Fortune.jpeg"),
+      "10 Wheel of Fortune",
+      "assets/images/tarot/10_Wheel_of_Fortune.jpeg",
+    ),
     TarotCard("11 Justice", "assets/images/tarot/11_Justice.jpeg"),
     TarotCard("12 The Hanged Man", "assets/images/tarot/12_Hanged_Man.jpeg"),
     TarotCard("13 Death", "assets/images/tarot/13_Death.jpeg"),
@@ -99,8 +103,8 @@ class TarotDeck {
   ];
 
   List<TarotCard> getAllCards() {
-    List<TarotCard> card = List.of(
-        [...majorArcana, ...cups, ...wands, ...swords, ...pentacles]);
+    List<TarotCard> card =
+        List.of([...majorArcana, ...cups, ...wands, ...swords, ...pentacles]);
     return card;
   }
 }

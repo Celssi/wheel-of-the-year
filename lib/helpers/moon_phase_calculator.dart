@@ -8,20 +8,48 @@ const _moonCycleLengthInDays = 29.53058867956790123457;
 final List<LunarPhase> lunarPhases = [
   LunarPhase('New Moon', 0.0, 1.0, LunarPhaseName.newMoon),
   LunarPhase(
-      'Waxing Crescent', 1.0, 6.38264692644001, LunarPhaseName.waxingCrescent),
-  LunarPhase('First Quarter', 6.38264692644001, 8.38264692644,
-      LunarPhaseName.firstQuarter),
-  LunarPhase('Waxing Gibbous', 8.38264692644, 13.76529385288,
-      LunarPhaseName.waxingGibbous),
-  LunarPhase('Full Moon', 13.76529385288, 15.76529385288, LunarPhaseName.full),
-  LunarPhase('Waning Gibbous', 15.76529385288, 21.14794077932,
-      LunarPhaseName.waningGibbous),
-  LunarPhase('Last Quarter', 21.14794077932, 23.14794077932,
-      LunarPhaseName.lastQuarter),
-  LunarPhase('Waning Crescent', 23.14794077932, 28.53058770576,
-      LunarPhaseName.waningCrescent),
+    'Waxing Crescent',
+    1.0,
+    6.38264692644001,
+    LunarPhaseName.waxingCrescent,
+  ),
   LunarPhase(
-      'New Moon', 28.53058770576, 29.53058770576, LunarPhaseName.newMoon),
+    'First Quarter',
+    6.38264692644001,
+    8.38264692644,
+    LunarPhaseName.firstQuarter,
+  ),
+  LunarPhase(
+    'Waxing Gibbous',
+    8.38264692644,
+    13.76529385288,
+    LunarPhaseName.waxingGibbous,
+  ),
+  LunarPhase('Full Moon', 13.76529385288, 15.76529385288, LunarPhaseName.full),
+  LunarPhase(
+    'Waning Gibbous',
+    15.76529385288,
+    21.14794077932,
+    LunarPhaseName.waningGibbous,
+  ),
+  LunarPhase(
+    'Last Quarter',
+    21.14794077932,
+    23.14794077932,
+    LunarPhaseName.lastQuarter,
+  ),
+  LunarPhase(
+    'Waning Crescent',
+    23.14794077932,
+    28.53058770576,
+    LunarPhaseName.waningCrescent,
+  ),
+  LunarPhase(
+    'New Moon',
+    28.53058770576,
+    29.53058770576,
+    LunarPhaseName.newMoon,
+  ),
 ];
 
 double _getMoonAge() {

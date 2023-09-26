@@ -9,45 +9,54 @@ class TarotSingleContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-        builder: (_) => dataStore.isLoading
-            ? ListView(children: const [Spinner()])
-            : getTextList());
+      builder: (_) => dataStore.isLoading
+          ? ListView(children: const [Spinner()])
+          : getTextList(),
+    );
   }
 
   Widget getTextList() {
     List<String> paragraphs = dataStore.tarotText.text.split('\n');
 
     return dataStore.selectedTarotCard != null
-        ? ListView(children: <Widget>[
-            Text(
-              dataStore.selectedTarotCard?.name ?? '',
-              style: const TextStyle(fontSize: 48),
-            ),
-            const SizedBox(height: 28),
-            ...paragraphs.map((p) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        ? ListView(
+            children: <Widget>[
+              Text(
+                dataStore.selectedTarotCard?.name ?? '',
+                style: const TextStyle(fontSize: 48),
+              ),
+              const SizedBox(height: 28),
+              ...paragraphs.map((p) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      p,
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                );
+              }).toList(),
+              const Text(
+                'Keywords',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Wrap(
+                spacing: 5,
+                runSpacing: 5,
                 children: [
-                  Text(
-                    p,
-                    style: const TextStyle(fontSize: 24),
-                  ),
-                  const SizedBox(height: 20)
+                  ...dataStore.tarotText.keywords.split(', ').map((keyword) {
+                    return Chip(
+                      visualDensity: VisualDensity.compact,
+                      label: Text(keyword),
+                    );
+                  }),
                 ],
-              );
-            }).toList(),
-            const Text(
-              'Keywords',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Wrap(spacing: 5, runSpacing: 5, children: [
-              ...dataStore.tarotText.keywords.split(', ').map((keyword) {
-                return Chip(
-                    visualDensity: VisualDensity.compact, label: Text(keyword));
-              })
-            ])
-          ])
+              ),
+            ],
+          )
         : const Text('Not found');
   }
 }

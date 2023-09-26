@@ -16,15 +16,17 @@ class TarotSingle extends StatelessWidget {
       body: Hero(
         tag: dataStore.selectedTarotCard?.name ?? '',
         child: Observer(
-            builder: (_) =>
-                Card(
-                    child: BackgroundContainer(
-                        backgroundImage:
-                        '${dataStore.selectedTarotCard?.imagePath}',
-                        child: ContentContainer(
-                            child: dataStore.hasInternet
-                                ? const TarotSingleContent()
-                                : const CheckConnectionNotification())))),
+          builder: (_) => Card(
+            child: BackgroundContainer(
+              backgroundImage: '${dataStore.selectedTarotCard?.imagePath}',
+              child: ContentContainer(
+                child: dataStore.hasInternet
+                    ? const TarotSingleContent()
+                    : const CheckConnectionNotification(),
+              ),
+            ),
+          ),
+        ),
       ),
       showBottomButtons: false,
     );

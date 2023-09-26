@@ -13,39 +13,42 @@ class MoonCard extends StatelessWidget {
     final DateTime now = DateTime.now();
 
     return InkWell(
-        splashColor: Colors.red,
-        onTap: () {
-          dataStore.setSelectedSabbat(dataStore.closestSabbat);
-          Navigator.of(context).push(MaterialPageRoute(
+      splashColor: Colors.red,
+      onTap: () {
+        dataStore.setSelectedSabbat(dataStore.closestSabbat);
+        Navigator.of(context).push(
+          MaterialPageRoute(
             builder: (context) => const MoonSingle(),
-          ));
-        },
-        child: ContentContainer(
-          child: Center(
-            child: Column(
-              children: [
-                const Text(
-                  'Current moon phase',
-                  style: TextStyle(fontSize: 35),
-                ),
-                MoonWidget(
-                  date: DateTime(now.year, now.month, now.day),
-                  resolution: 50,
-                  size: 80,
-                  earthShineColor: Colors.blueGrey.shade900,
-                  hemisphere: settingsStore.hemisphere,
-                ),
-                Text(
-                  getCurrentLunarPhase(),
-                  style: const TextStyle(fontSize: 28),
-                ),
-                Text(
-                  'Next full moon is in ${daysUntilPhase()} day(s)',
-                  style: const TextStyle(fontSize: 24),
-                ),
-              ],
-            ),
           ),
-        ));
+        );
+      },
+      child: ContentContainer(
+        child: Center(
+          child: Column(
+            children: [
+              const Text(
+                'Current moon phase',
+                style: TextStyle(fontSize: 35),
+              ),
+              MoonWidget(
+                date: DateTime(now.year, now.month, now.day),
+                resolution: 50,
+                size: 80,
+                earthShineColor: Colors.blueGrey.shade900,
+                hemisphere: settingsStore.hemisphere,
+              ),
+              Text(
+                getCurrentLunarPhase(),
+                style: const TextStyle(fontSize: 28),
+              ),
+              Text(
+                'Next full moon is in ${daysUntilPhase()} day(s)',
+                style: const TextStyle(fontSize: 24),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

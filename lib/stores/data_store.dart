@@ -18,11 +18,13 @@ class DataStore = DataStoreBase with _$DataStore;
 
 abstract class DataStoreBase with Store {
   DataStoreBase() {
-    Connectivity().checkConnectivity().then((connectivityResult) => {
-          hasInternet = connectivityResult == ConnectivityResult.mobile ||
-              connectivityResult == ConnectivityResult.wifi ||
-              connectivityResult == ConnectivityResult.ethernet
-        });
+    Connectivity().checkConnectivity().then(
+          (connectivityResult) => {
+            hasInternet = connectivityResult == ConnectivityResult.mobile ||
+                connectivityResult == ConnectivityResult.wifi ||
+                connectivityResult == ConnectivityResult.ethernet,
+          },
+        );
 
     _subscription = Connectivity()
         .onConnectivityChanged

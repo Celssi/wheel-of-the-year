@@ -8,40 +8,41 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-        builder: (_) => BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                  backgroundColor: Colors.white,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.list),
-                  label: 'Sabbats',
-                  backgroundColor: Colors.white,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.web_stories),
-                  label: 'Tarot',
-                  backgroundColor: Colors.white,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
-                  label: 'Settings',
-                  backgroundColor: Colors.white,
-                ),
-              ],
-              currentIndex: dataStore.selectedTab,
-              selectedItemColor: Colors.red,
-              selectedFontSize: 16,
-              unselectedFontSize: 16,
-              unselectedItemColor: Colors.white,
-              backgroundColor: Colors.black87,
-              iconSize: 30,
-              selectedLabelStyle: const TextStyle(fontFamily: 'roboto'),
-              unselectedLabelStyle: const TextStyle(fontFamily: 'roboto'),
-              onTap: (int index) => dataStore.setSelectedTab(index),
-            ));
+      builder: (_) => BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Sabbats',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.web_stories),
+            label: 'Tarot',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Colors.white,
+          ),
+        ],
+        currentIndex: dataStore.selectedTab,
+        selectedItemColor: Colors.red,
+        selectedFontSize: 16,
+        unselectedFontSize: 16,
+        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.black87,
+        iconSize: 30,
+        selectedLabelStyle: const TextStyle(fontFamily: 'roboto'),
+        unselectedLabelStyle: const TextStyle(fontFamily: 'roboto'),
+        onTap: (int index) => dataStore.setSelectedTab(index),
+      ),
+    );
   }
 }
