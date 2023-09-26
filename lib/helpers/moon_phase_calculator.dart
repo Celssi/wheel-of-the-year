@@ -3,8 +3,6 @@ import 'package:witch_army_knife/models/lunar_phase_name.dart';
 
 const _moonCycleLengthInDays = 29.53058867956790123457;
 
-// Harvest moon https://www.rmg.co.uk/stories/topics/full-moon-calendar
-
 final List<LunarPhase> lunarPhases = [
   LunarPhase('New Moon', 0.0, 1.0, LunarPhaseName.newMoon),
   LunarPhase(
@@ -55,15 +53,12 @@ final List<LunarPhase> lunarPhases = [
 double _getMoonAge() {
   DateTime now = DateTime.now();
   double moonCycleLengthInSeconds = _moonCycleLengthInDays * 24 * 60 * 60;
-  DateTime date =
-      DateTime(now.year, now.month, now.day, now.hour, now.minute, now.second);
+  DateTime date = DateTime(now.year, now.month, now.day, now.hour, now.minute, now.second);
 
   // DateTime of a known new moon
   DateTime newMoon = DateTime(2023, 1, 21, 22, 53);
 
-  double phase =
-      ((date.millisecondsSinceEpoch - newMoon.millisecondsSinceEpoch) / 1000) %
-          moonCycleLengthInSeconds;
+  double phase = ((date.millisecondsSinceEpoch - newMoon.millisecondsSinceEpoch) / 1000) % moonCycleLengthInSeconds;
   double moonAge = phase / (24 * 3600);
   return moonAge;
 }
@@ -81,8 +76,7 @@ String getCurrentLunarPhase() {
 
 int daysUntilPhase({LunarPhaseName wantedPhase = LunarPhaseName.full}) {
   double moonAge = _getMoonAge();
-  LunarPhase lunarPhase =
-      lunarPhases.firstWhere((element) => element.phaseName == wantedPhase);
+  LunarPhase lunarPhase = lunarPhases.firstWhere((element) => element.phaseName == wantedPhase);
 
   double daysUntil = 0;
   if (moonAge < lunarPhase.end) {
@@ -93,17 +87,13 @@ int daysUntilPhase({LunarPhaseName wantedPhase = LunarPhaseName.full}) {
   }
 
   DateTime now = DateTime.now();
-  DateTime dateOfTheWantedPhase = now
-      .add(Duration(milliseconds: (daysUntil * 24 * 60 * 60 * 1000).round()));
+  DateTime dateOfTheWantedPhase = now.add(Duration(milliseconds: (daysUntil * 24 * 60 * 60 * 1000).round()));
 
   return _daysBetween(now, dateOfTheWantedPhase);
 }
 
 String getLunarPhaseLabel(LunarPhaseName phaseName) {
-  return lunarPhases
-          .firstWhere((phase) => phase.phaseName == phaseName)
-          .phaseLabel ??
-      '';
+  return lunarPhases.firstWhere((phase) => phase.phaseName == phaseName).phaseLabel ?? '';
 }
 
 int _daysBetween(DateTime from, DateTime to) {
