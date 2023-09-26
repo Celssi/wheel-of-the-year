@@ -18,12 +18,11 @@ class DataStore = DataStoreBase with _$DataStore;
 
 abstract class DataStoreBase with Store {
   DataStoreBase() {
-    Connectivity().checkConnectivity().then((connectivityResult) =>
-    {
-      hasInternet = connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi ||
-          connectivityResult == ConnectivityResult.ethernet
-    });
+    Connectivity().checkConnectivity().then((connectivityResult) => {
+          hasInternet = connectivityResult == ConnectivityResult.mobile ||
+              connectivityResult == ConnectivityResult.wifi ||
+              connectivityResult == ConnectivityResult.ethernet
+        });
 
     _subscription = Connectivity()
         .onConnectivityChanged
@@ -57,7 +56,7 @@ abstract class DataStoreBase with Store {
 
   @observable
   TarotText cardOfTheDayText =
-  const TarotText(name: '', text: '', keywords: '');
+      const TarotText(name: '', text: '', keywords: '');
 
   @observable
   bool isLoading = false;
@@ -128,9 +127,7 @@ abstract class DataStoreBase with Store {
     int daysUntil = 999;
 
     for (final sabbat in sabbats) {
-      int currentDaysUntil = sabbat.date
-          .difference(now)
-          .inDays;
+      int currentDaysUntil = sabbat.date.difference(now).inDays;
 
       if (currentDaysUntil >= 0 && currentDaysUntil < daysUntil) {
         daysUntil = currentDaysUntil;
@@ -144,9 +141,7 @@ abstract class DataStoreBase with Store {
   @computed
   int get daysUntilNextSabbat {
     DateTime now = DateTime.now();
-    return (closestSabbat.date
-        .difference(now)
-        .inHours / 24).ceil();
+    return (closestSabbat.date.difference(now).inHours / 24).ceil();
   }
 
   @computed
@@ -158,7 +153,7 @@ abstract class DataStoreBase with Store {
   TarotCard get cardOfTheDay {
     TarotCard selectedCardOfTheDay = _selectCardOfTheDay();
 
-    if (hasInternet) {
+    if (hasInternet && selectedCardOfTheDay.name != cardOfTheDayText.name) {
       textApi
           .getTarotText(selectedCardOfTheDay.name)
           .then((value) => cardOfTheDayText = value);
@@ -173,14 +168,10 @@ abstract class DataStoreBase with Store {
     cards.shuffle(random);
 
     DateTime date = DateTime.now();
-    int dayOfYear = date
-        .difference(DateTime(date.year))
-        .inDays + 1;
+    int dayOfYear = date.difference(DateTime(date.year)).inDays + 1;
 
     TarotCard selectedCardOfTheDay =
-    cards[dayOfYear % tarotDeck
-        .getAllCards()
-        .length];
+        cards[dayOfYear % tarotDeck.getAllCards().length];
     return selectedCardOfTheDay;
   }
 }
