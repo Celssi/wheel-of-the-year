@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/pages/tarot/tarot_single.dart';
 
@@ -25,11 +26,11 @@ class TarotCard extends StatelessWidget {
             children: <Widget>[
               const Text(
                 'Tarot card of the day is',
-                style: TextStyle(fontSize: 35),
+                style: TextStyle(fontSize: subHeaderSize),
               ),
               Text(
                 dataStore.cardOfTheDay.name,
-                style: const TextStyle(fontSize: 48),
+                style: const TextStyle(fontSize: mainHeaderSize),
               ),
               SizedBox.fromSize(size: const Size.fromHeight(10)),
               ClipRRect(
@@ -41,14 +42,12 @@ class TarotCard extends StatelessWidget {
                 ),
               ),
               if (dataStore.cardOfTheDayText.keywords.isNotEmpty) ...[
-                const SizedBox(height: 20),
+                const SizedBox(height: normalGap),
                 Wrap(
                   spacing: 5,
                   runSpacing: 5,
                   children: [
-                    ...dataStore.cardOfTheDayText.keywords
-                        .split(', ')
-                        .map((keyword) {
+                    ...dataStore.cardOfTheDayText.keywords.split(', ').map((keyword) {
                       return Chip(
                         visualDensity: VisualDensity.compact,
                         label: Text(keyword),

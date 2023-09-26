@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/helper-widgets/bottom_navigation.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 
 class MainScaffold extends StatelessWidget {
   const MainScaffold({
@@ -23,7 +24,7 @@ class MainScaffold extends StatelessWidget {
         ),
         title: const Text(
           'Witch Army Knife',
-          style: TextStyle(color: Colors.red, fontSize: 30),
+          style: TextStyle(color: Colors.red, fontSize: textSize),
         ),
       ),
       body: body,

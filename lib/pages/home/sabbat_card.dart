@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/pages/sabbats/sabbat_single.dart';
 
@@ -23,11 +24,11 @@ class SabbatCard extends StatelessWidget {
           children: <Widget>[
             const Text(
               'The next sabbat is',
-              style: TextStyle(fontSize: 35),
+              style: TextStyle(fontSize: subHeaderSize),
             ),
             Text(
               dataStore.sabbats.isNotEmpty ? dataStore.closestSabbat.name : '-',
-              style: const TextStyle(fontSize: 48),
+              style: const TextStyle(fontSize: mainHeaderSize),
             ),
             Text(
               dataStore.sabbats.isNotEmpty
@@ -35,7 +36,7 @@ class SabbatCard extends StatelessWidget {
                       ? 'Which is today! 🥳'
                       : 'Which is in ${dataStore.daysUntilNextSabbat} day(s)'
                   : '-',
-              style: const TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: smallTextSize),
             ),
           ],
         ),

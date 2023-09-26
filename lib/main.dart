@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:witch_army_knife/api/text_api.dart';
 import 'package:witch_army_knife/app-container.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/stores/data_store.dart';
 import 'package:witch_army_knife/stores/settings_store.dart';
 
@@ -9,7 +11,6 @@ final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
 
 // teema
-// tarot
 // ilmoitukset
 
 void main() {
@@ -53,9 +54,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
         useMaterial3: true,
         splashColor: Colors.transparent,
-        fontFamily: 'Caveat',
-        textTheme: const TextTheme(
-          labelLarge: TextStyle(fontSize: 20),
+        textTheme: GoogleFonts.caveatTextTheme().copyWith(
+          labelLarge: const TextStyle(fontSize: extraSmallTextSize),
         ),
         pageTransitionsTheme: const PageTransitionsTheme(
           builders: <TargetPlatform, PageTransitionsBuilder>{

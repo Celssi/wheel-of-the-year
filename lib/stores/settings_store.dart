@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/hemisphere.dart';
 
@@ -71,7 +72,7 @@ abstract class SettingsStoreBase with Store {
       SnackBar(
         content: const Text(
           'Settings updated!',
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: navigationSize),
         ),
         action: SnackBarAction(
           label: 'Close',

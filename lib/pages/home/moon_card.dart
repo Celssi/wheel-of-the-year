@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
 import 'package:witch_army_knife/helpers/moon_phase_calculator.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/pages/home/moon_phase/moon_widget.dart';
 import 'package:witch_army_knife/pages/home/moon_single.dart';
@@ -28,7 +29,7 @@ class MoonCard extends StatelessWidget {
             children: [
               const Text(
                 'Current moon phase',
-                style: TextStyle(fontSize: 35),
+                style: TextStyle(fontSize: mainHeaderSize),
               ),
               MoonWidget(
                 date: DateTime(now.year, now.month, now.day),
@@ -39,11 +40,11 @@ class MoonCard extends StatelessWidget {
               ),
               Text(
                 getCurrentLunarPhase(),
-                style: const TextStyle(fontSize: 28),
+                style: const TextStyle(fontSize: textSize),
               ),
               Text(
                 'Next full moon is in ${daysUntilPhase()} day(s)',
-                style: const TextStyle(fontSize: 24),
+                style: const TextStyle(fontSize: smallTextSize),
               ),
             ],
           ),

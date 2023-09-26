@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_knife/helper-widgets/background-container.dart';
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/hemisphere.dart';
 
@@ -21,7 +22,7 @@ class Settings extends StatelessWidget {
                 children: [
                   const Text(
                     'Settings',
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: mainHeaderSize, fontWeight: FontWeight.bold),
                   ),
                   const Divider(
                     height: 30,
@@ -30,7 +31,7 @@ class Settings extends StatelessWidget {
                   ),
                   const Text(
                     'Home page settings',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: textSize, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 20,
@@ -40,7 +41,7 @@ class Settings extends StatelessWidget {
                     value: settingsStore.showMoonPhase,
                     title: const Text(
                       'Show moon phase',
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(fontSize: textSize),
                     ),
                     activeColor: Colors.red,
                     onChanged: (bool value) {
@@ -52,7 +53,7 @@ class Settings extends StatelessWidget {
                     value: settingsStore.showNextSabbat,
                     title: const Text(
                       'Show next sabbat',
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(fontSize: textSize),
                     ),
                     activeColor: Colors.red,
                     onChanged: (bool value) {
@@ -64,7 +65,7 @@ class Settings extends StatelessWidget {
                     value: settingsStore.showCardOfTheDay,
                     title: const Text(
                       'Show card of the day',
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(fontSize: textSize),
                     ),
                     activeColor: Colors.red,
                     onChanged: (bool value) {
@@ -78,7 +79,7 @@ class Settings extends StatelessWidget {
                   ),
                   const Text(
                     'General settings',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: textSize, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 20,
@@ -86,11 +87,11 @@ class Settings extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const Text('Hemisphere', style: TextStyle(fontSize: 30)),
+                      const Text('Hemisphere', style: TextStyle(fontSize: textSize)),
                       ListTile(
                         title: const Text(
                           'Northern',
-                          style: TextStyle(fontSize: 30),
+                          style: TextStyle(fontSize: textSize),
                         ),
                         contentPadding: EdgeInsets.zero,
                         leading: Radio<Hemisphere>(
@@ -105,7 +106,7 @@ class Settings extends StatelessWidget {
                       ListTile(
                         title: const Text(
                           'Southern',
-                          style: TextStyle(fontSize: 30),
+                          style: TextStyle(fontSize: textSize),
                         ),
                         contentPadding: EdgeInsets.zero,
                         leading: Radio<Hemisphere>(

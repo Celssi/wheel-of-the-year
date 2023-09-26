@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_knife/helper-widgets/background-container.dart';
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/tarot_card.dart';
 import 'package:witch_army_knife/pages/tarot/tarot_single.dart';
@@ -50,11 +51,11 @@ class SuiteContainer extends StatelessWidget {
                           height: 110,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: smallGap),
                       Text(
                         tarotCard.name,
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: navigationSize,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_knife/helpers/moon_phase_calculator.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/lunar_phase_name.dart';
 import 'package:witch_army_knife/pages/home/moon_phase/moon_widget.dart';
@@ -21,8 +22,7 @@ class MoonSingleContent extends StatelessWidget {
       unsortedDates[getLunarPhaseLabel(phaseName)] = nextDate;
     }
 
-    List<MapEntry<String, DateTime>> sortedList =
-        unsortedDates.entries.toList();
+    List<MapEntry<String, DateTime>> sortedList = unsortedDates.entries.toList();
     sortedList.sort((a, b) => a.value.compareTo(b.value));
     Map<String, DateTime> sortedDates = Map.fromEntries(sortedList);
 
@@ -30,7 +30,7 @@ class MoonSingleContent extends StatelessWidget {
       widgets.add(
         Text(
           'Next $key: ${value.day}.${value.month}.${value.year}',
-          style: const TextStyle(fontSize: 28),
+          style: const TextStyle(fontSize: textSize),
         ),
       );
     });
@@ -47,16 +47,16 @@ class MoonSingleContent extends StatelessWidget {
         children: <Widget>[
           const Text(
             'Moon phase now',
-            style: TextStyle(fontSize: 48),
+            style: TextStyle(fontSize: mainHeaderSize),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: smallGap),
           Text(
             getCurrentLunarPhase(),
-            style: const TextStyle(fontSize: 28),
+            style: const TextStyle(fontSize: textSize),
           ),
           Text(
             'Next full moon is in ${daysUntilPhase()} day(s)',
-            style: const TextStyle(fontSize: 24),
+            style: const TextStyle(fontSize: smallTextSize),
           ),
           Center(
             child: MoonWidget(

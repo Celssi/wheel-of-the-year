@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:witch_army_knife/helper-widgets/background-container.dart';
 import 'package:witch_army_knife/helper-widgets/content-container.dart';
+import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/pages/tarot/suite_container.dart';
 
@@ -16,35 +17,35 @@ class Tarot extends StatelessWidget {
         child: ListView(
           children: [
             getHeaderBox(title: 'Major Arcana'),
-            const SizedBox(height: 10),
+            const SizedBox(height: smallGap),
             SuiteContainer(dataStore.tarotDeck.majorArcana),
             const Divider(
               height: 50,
               thickness: 5,
             ),
             getHeaderBox(title: 'Wands'),
-            const SizedBox(height: 10),
+            const SizedBox(height: smallGap),
             SuiteContainer(dataStore.tarotDeck.wands),
             const Divider(
               height: 50,
               thickness: 5,
             ),
             getHeaderBox(title: 'Cups'),
-            const SizedBox(height: 10),
+            const SizedBox(height: smallGap),
             SuiteContainer(dataStore.tarotDeck.cups),
             const Divider(
               height: 50,
               thickness: 5,
             ),
             getHeaderBox(title: 'Swords'),
-            const SizedBox(height: 10),
+            const SizedBox(height: smallGap),
             SuiteContainer(dataStore.tarotDeck.swords),
             const Divider(
               height: 50,
               thickness: 5,
             ),
             getHeaderBox(title: 'Pentacles'),
-            const SizedBox(height: 10),
+            const SizedBox(height: smallGap),
             SuiteContainer(dataStore.tarotDeck.pentacles),
           ],
         ),
@@ -59,7 +60,7 @@ class Tarot extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: const TextStyle(fontSize: 40),
+            style: const TextStyle(fontSize: mainHeaderSize),
           ),
         ),
       ),

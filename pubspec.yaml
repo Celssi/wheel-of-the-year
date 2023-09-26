@@ -44,6 +44,8 @@ dependencies:
   json_annotation: ^4.8.1
   connectivity_plus: ^4.0.2
   shared_preferences: ^2.2.1
+  google_fonts: ^6.1.0
+  flutter_local_notifications: ^15.1.1
 
 dev_dependencies:
   flutter_test:
@@ -86,10 +88,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Caveat
-      fonts:
-        - asset: assets/fonts/Caveat.ttf
+  #fonts:
+  #  - family: Caveat
+  #    fonts:
+  #      - asset: assets/fonts/Caveat.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
