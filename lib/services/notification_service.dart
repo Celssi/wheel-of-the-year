@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:witch_army_knife/main.dart';
 
@@ -14,6 +15,8 @@ class NotificationService {
       if (!_notificationsEnabled) {
         await requestPermissions();
       }
+
+      settingsStore.setShowNotifications(_notificationsEnabled, false, null);
     }
 
     var initializationSettings = InitializationSettings(
@@ -55,7 +58,7 @@ class NotificationService {
     }
   }
 
-  Future<void> requestPermissions() async {
+  Future<void> requestPermissions({bool openSettingsIfNeeded = false}) async {
     if (Platform.isIOS || Platform.isMacOS) {
       await notificationsPlugin
           .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
@@ -75,7 +78,13 @@ class NotificationService {
       final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
           notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
 
-      final bool? granted = await androidImplementation?.requestPermission();
+      final bool granted = await androidImplementation?.requestPermission() ?? false;
+
+      if (!granted && openSettingsIfNeeded) {
+        await AppSettings.openNotificationSettings();
+        await _isAndroidPermissionGranted();
+      }
+
       _notificationsEnabled = granted ?? false;
     }
   }

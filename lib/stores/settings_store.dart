@@ -62,16 +62,19 @@ abstract class SettingsStoreBase with Store {
   }
 
   @action
-  void setShowNotifications(bool value, BuildContext context) {
+  void setShowNotifications(bool value, bool openSettingsIfNeeded, BuildContext? context) {
     showNotifications = value;
     prefs.setBool('showNotifications', value);
 
     if (!showNotifications) {
       NotificationService().cancelNotifications();
     } else {
-      NotificationService().requestPermissions();
+      NotificationService().requestPermissions(openSettingsIfNeeded: openSettingsIfNeeded);
     }
-    _showUpdatedNotification(context);
+
+    if (context != null) {
+      _showUpdatedNotification(context);
+    }
   }
 
   @action

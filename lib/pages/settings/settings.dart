@@ -127,7 +127,7 @@ class Settings extends StatelessWidget {
                         ),
                         activeColor: Colors.red,
                         onChanged: (bool showNotifications) {
-                          settingsStore.setShowNotifications(showNotifications, context);
+                          settingsStore.setShowNotifications(showNotifications, true, context);
                         },
                       )
                     ],

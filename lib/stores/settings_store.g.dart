@@ -126,11 +126,12 @@ mixin _$SettingsStore on SettingsStoreBase, Store {
   }
 
   @override
-  void setShowNotifications(bool value, BuildContext context) {
+  void setShowNotifications(
+      bool value, bool openSettingsIfNeeded, BuildContext? context) {
     final _$actionInfo = _$SettingsStoreBaseActionController.startAction(
         name: 'SettingsStoreBase.setShowNotifications');
     try {
-      return super.setShowNotifications(value, context);
+      return super.setShowNotifications(value, openSettingsIfNeeded, context);
     } finally {
       _$SettingsStoreBaseActionController.endAction(_$actionInfo);
     }
