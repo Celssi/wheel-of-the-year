@@ -33,15 +33,9 @@ class NotificationService {
           for (int i = 1; i <= 10; i++) {
             await scheduleNotification(
               'Tarot card of the day has been selected',
-              now
-                  .add(Duration(days: i))
-                  .year,
-              now
-                  .add(Duration(days: i))
-                  .month,
-              now
-                  .add(Duration(days: i))
-                  .day,
+              now.add(Duration(days: i)).year,
+              now.add(Duration(days: i)).month,
+              now.add(Duration(days: i)).day,
             );
           }
         }
@@ -68,12 +62,10 @@ class NotificationService {
           );
         }
       }
-
-      print((await notificationsPlugin.getActiveNotifications()).length);
     }
 
     var initializationSettings = InitializationSettings(
-      android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
+      android: const AndroidInitializationSettings('@mipmap-hdpi/ic_launcher'),
       iOS: DarwinInitializationSettings(
         onDidReceiveLocalNotification: (int id, String? title, String? body, String? payload) async {},
       ),
@@ -140,20 +132,20 @@ class NotificationService {
       await notificationsPlugin
           .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
           ?.requestPermissions(
-        alert: true,
-        badge: true,
-        sound: true,
-      );
+            alert: true,
+            badge: true,
+            sound: true,
+          );
       await notificationsPlugin
           .resolvePlatformSpecificImplementation<MacOSFlutterLocalNotificationsPlugin>()
           ?.requestPermissions(
-        alert: true,
-        badge: true,
-        sound: true,
-      );
+            alert: true,
+            badge: true,
+            sound: true,
+          );
     } else if (Platform.isAndroid) {
       final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
-      notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+          notificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
 
       final bool granted = await androidImplementation?.requestPermission() ?? false;
 
@@ -169,8 +161,8 @@ class NotificationService {
   Future<void> _isAndroidPermissionGranted() async {
     if (Platform.isAndroid) {
       final bool granted = await notificationsPlugin
-          .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-          ?.areNotificationsEnabled() ??
+              .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+              ?.areNotificationsEnabled() ??
           false;
 
       _notificationsEnabled = granted;
