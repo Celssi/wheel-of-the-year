@@ -100,20 +100,19 @@ List<Sabbat> getSabbats({Hemisphere hemisphere = Hemisphere.northern}) {
   var sabbats = seasonEventMap.keys
       .map(
         (sabbatName) => Sabbat(
-          calculateSeasonEvent(
+          date: calculateSeasonEvent(
             now.year,
             seasonEventMap[sabbatName]!,
             hemisphere: hemisphere,
           ),
-          sabbatName,
+          name: sabbatName,
         ),
       )
       .toList();
 
   for (var i = 0; i < sabbats.length; i++) {
     if (sabbats[i].date.isBefore(now)) {
-      sabbats[i].date =
-          calculateSeasonEvent(now.year + 1, seasonEventMap[sabbats[i].name]!);
+      sabbats[i] = sabbats[i].copyWith(date: calculateSeasonEvent(now.year + 1, seasonEventMap[sabbats[i].name]!));
     }
   }
 

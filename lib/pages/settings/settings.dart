@@ -25,7 +25,7 @@ class Settings extends StatelessWidget {
                     style: TextStyle(fontSize: mainHeaderSize, fontWeight: FontWeight.bold),
                   ),
                   const Divider(
-                    height: 30,
+                    height: bigGap,
                     thickness: 1,
                     color: Colors.black,
                   ),
@@ -34,7 +34,7 @@ class Settings extends StatelessWidget {
                     style: TextStyle(fontSize: textSize, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: normalGap,
                   ),
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
@@ -73,7 +73,7 @@ class Settings extends StatelessWidget {
                     },
                   ),
                   const Divider(
-                    height: 30,
+                    height: bigGap,
                     thickness: 1,
                     color: Colors.black,
                   ),
@@ -82,7 +82,7 @@ class Settings extends StatelessWidget {
                     style: TextStyle(fontSize: textSize, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: normalGap,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,6 +118,18 @@ class Settings extends StatelessWidget {
                           },
                         ),
                       ),
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        value: settingsStore.showNotifications,
+                        title: const Text(
+                          'Show notifications',
+                          style: TextStyle(fontSize: textSize),
+                        ),
+                        activeColor: Colors.red,
+                        onChanged: (bool showNotifications) {
+                          settingsStore.setShowNotifications(showNotifications, context);
+                        },
+                      )
                     ],
                   ),
                 ],

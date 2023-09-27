@@ -73,6 +73,22 @@ mixin _$SettingsStore on SettingsStoreBase, Store {
     });
   }
 
+  late final _$showNotificationsAtom =
+      Atom(name: 'SettingsStoreBase.showNotifications', context: context);
+
+  @override
+  bool get showNotifications {
+    _$showNotificationsAtom.reportRead();
+    return super.showNotifications;
+  }
+
+  @override
+  set showNotifications(bool value) {
+    _$showNotificationsAtom.reportWrite(value, super.showNotifications, () {
+      super.showNotifications = value;
+    });
+  }
+
   late final _$SettingsStoreBaseActionController =
       ActionController(name: 'SettingsStoreBase', context: context);
 
@@ -110,6 +126,17 @@ mixin _$SettingsStore on SettingsStoreBase, Store {
   }
 
   @override
+  void setShowNotifications(bool value, BuildContext context) {
+    final _$actionInfo = _$SettingsStoreBaseActionController.startAction(
+        name: 'SettingsStoreBase.setShowNotifications');
+    try {
+      return super.setShowNotifications(value, context);
+    } finally {
+      _$SettingsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHemisphere(Hemisphere? value, BuildContext context) {
     final _$actionInfo = _$SettingsStoreBaseActionController.startAction(
         name: 'SettingsStoreBase.setHemisphere');
@@ -126,7 +153,8 @@ mixin _$SettingsStore on SettingsStoreBase, Store {
 hemisphere: ${hemisphere},
 showMoonPhase: ${showMoonPhase},
 showNextSabbat: ${showNextSabbat},
-showCardOfTheDay: ${showCardOfTheDay}
+showCardOfTheDay: ${showCardOfTheDay},
+showNotifications: ${showNotifications}
     ''';
   }
 }

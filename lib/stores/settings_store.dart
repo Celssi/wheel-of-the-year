@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/hemisphere.dart';
+import 'package:witch_army_knife/services/notification_service.dart';
 
 part 'settings_store.g.dart';
 
@@ -13,9 +14,10 @@ class SettingsStore extends SettingsStoreBase with _$SettingsStore {
   SettingsStore() {
     SharedPreferences.getInstance().then((value) {
       prefs = value;
-      showMoonPhase = prefs.getBool('moonPhase') ?? true;
-      showNextSabbat = prefs.getBool('nextSabbat') ?? true;
-      showCardOfTheDay = prefs.getBool('cardOfTheDay') ?? true;
+      showMoonPhase = prefs.getBool('showMoonPhase') ?? true;
+      showNextSabbat = prefs.getBool('showNextSabbat') ?? true;
+      showCardOfTheDay = prefs.getBool('showCardOfTheDay') ?? true;
+      showNotifications = prefs.getBool('showNotifications') ?? true;
       hemisphere = Hemisphere.values[prefs.getInt('hemisphere') ?? 0];
       dataStore.loadSabbats(hemisphere);
     });
@@ -35,24 +37,40 @@ abstract class SettingsStoreBase with Store {
   @observable
   bool showCardOfTheDay = true;
 
+  @observable
+  bool showNotifications = true;
+
   @action
   void setShowMoonPhase(bool value, BuildContext context) {
     showMoonPhase = value;
-    prefs.setBool('moonPhase', value);
+    prefs.setBool('showMoonPhase', value);
     _showUpdatedNotification(context);
   }
 
   @action
   void setShowNextSabbat(bool value, BuildContext context) {
     showNextSabbat = value;
-    prefs.setBool('nextSabbath', value);
+    prefs.setBool('showNextSabbat', value);
     _showUpdatedNotification(context);
   }
 
   @action
   void setShowCardOfTheDay(bool value, BuildContext context) {
     showCardOfTheDay = value;
-    prefs.setBool('cardOfTheDay', value);
+    prefs.setBool('showCardOfTheDay', value);
+    _showUpdatedNotification(context);
+  }
+
+  @action
+  void setShowNotifications(bool value, BuildContext context) {
+    showNotifications = value;
+    prefs.setBool('showNotifications', value);
+
+    if (!showNotifications) {
+      NotificationService().cancelNotifications();
+    } else {
+      NotificationService().requestPermissions();
+    }
     _showUpdatedNotification(context);
   }
 

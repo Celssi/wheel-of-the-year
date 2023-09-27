@@ -1,10 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:witch_army_knife/models/lunar_phase_name.dart';
 
-class LunarPhase {
-  LunarPhase(this.phaseLabel, this.start, this.end, this.phaseName);
+part 'lunar_phase.freezed.dart';
+part 'lunar_phase.g.dart';
 
-  final String phaseLabel;
-  final double start;
-  final double end;
-  final LunarPhaseName phaseName;
+@freezed
+class LunarPhase with _$LunarPhase {
+  const factory LunarPhase({
+    required String phaseLabel,
+    required double start,
+    required double end,
+    required LunarPhaseName phaseName,
+  }) = _LunarPhase;
+
+  factory LunarPhase.fromJson(Map<String, Object?> json) => _$LunarPhaseFromJson(json);
 }

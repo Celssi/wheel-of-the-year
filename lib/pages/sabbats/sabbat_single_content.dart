@@ -10,39 +10,35 @@ class SabbatSingleContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => dataStore.isLoading ? ListView(children: const [Spinner()]) : getTextList(),
-    );
-  }
-
-  Widget getTextList() {
-    List<String> paragraphs = dataStore.sabbatText.text.split('\n');
-
-    return dataStore.selectedSabbat != null
-        ? ListView(
-            children: <Widget>[
-              Text(
-                dataStore.selectedSabbat?.name ?? '',
-                style: const TextStyle(fontSize: mainHeaderSize),
-              ),
-              Text(
-                '${dataStore.selectedSabbat?.date.day}.${dataStore.selectedSabbat?.date.month}.${dataStore.selectedSabbat?.date.year}',
-                style: const TextStyle(fontSize: smallTextSize),
-              ),
-              const SizedBox(height: bigGap),
-              ...paragraphs.map((p) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+      builder: (_) => dataStore.isLoading
+          ? ListView(children: const [Spinner()])
+          : dataStore.selectedSabbat != null
+              ? ListView(
+                  children: <Widget>[
                     Text(
-                      p,
+                      dataStore.selectedSabbat?.name ?? '',
+                      style: const TextStyle(fontSize: mainHeaderSize),
+                    ),
+                    Text(
+                      '${dataStore.selectedSabbat?.date.day}.${dataStore.selectedSabbat?.date.month}.${dataStore.selectedSabbat?.date.year}',
                       style: const TextStyle(fontSize: smallTextSize),
                     ),
-                    const SizedBox(height: normalGap),
+                    const SizedBox(height: bigGap),
+                    ...dataStore.sabbatText.text.split('\n').map((p) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            p,
+                            style: const TextStyle(fontSize: smallTextSize),
+                          ),
+                          const SizedBox(height: normalGap),
+                        ],
+                      );
+                    }).toList(),
                   ],
-                );
-              }).toList(),
-            ],
-          )
-        : const Text('Not found');
+                )
+              : const Text('Not found'),
+    );
   }
 }

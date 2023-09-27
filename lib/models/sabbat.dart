@@ -1,6 +1,14 @@
-class Sabbat {
-  Sabbat(this.date, this.name);
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  DateTime date;
-  String name;
+part 'sabbat.freezed.dart';
+part 'sabbat.g.dart';
+
+@freezed
+class Sabbat with _$Sabbat {
+  const factory Sabbat({
+    required DateTime date,
+    required String name,
+  }) = _Sabbat;
+
+  factory Sabbat.fromJson(Map<String, dynamic> json) => _$SabbatFromJson(json);
 }

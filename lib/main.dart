@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:witch_army_knife/api/text_api.dart';
 import 'package:witch_army_knife/app-container.dart';
 import 'package:witch_army_knife/helpers/sizes.dart';
+import 'package:witch_army_knife/services/notification_service.dart';
 import 'package:witch_army_knife/stores/data_store.dart';
 import 'package:witch_army_knife/stores/settings_store.dart';
 
@@ -11,9 +12,13 @@ final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
 
 // teema
-// ilmoitukset
+// ilmoitukset, muista asetukset
+// poista funktio widgetit
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService().initNotificationService();
+
   runApp(const MyApp());
 }
 
