@@ -29,7 +29,7 @@ class TextApi {
         ),
       );
 
-      return TarotText.fromJson(jsonDecode(res.body)['data']);
+      return TarotText.fromJson(jsonDecode(res.body)?['data']);
     } catch (e) {
       debugPrint(e.toString());
       rethrow;

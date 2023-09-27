@@ -10,9 +10,11 @@ part 'settings_store.g.dart';
 
 late SharedPreferences prefs;
 
-class SettingsStore extends SettingsStoreBase with _$SettingsStore {
-  SettingsStore() {
-    SharedPreferences.getInstance().then((value) {
+class SettingsStore extends SettingsStoreBase with _$SettingsStore {}
+
+abstract class SettingsStoreBase with Store {
+  Future<void> initSettingsStore() async {
+    await SharedPreferences.getInstance().then((value) {
       prefs = value;
       showMoonPhase = prefs.getBool('showMoonPhase') ?? true;
       showNextSabbat = prefs.getBool('showNextSabbat') ?? true;
@@ -22,9 +24,7 @@ class SettingsStore extends SettingsStoreBase with _$SettingsStore {
       dataStore.loadSabbats(hemisphere);
     });
   }
-}
 
-abstract class SettingsStoreBase with Store {
   @observable
   Hemisphere hemisphere = Hemisphere.northern;
 

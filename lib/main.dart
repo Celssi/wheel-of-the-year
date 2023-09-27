@@ -12,13 +12,9 @@ final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
 
 // teema
-// ilmoitukset, muista asetukset
-// poista funktio widgetit
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await NotificationService().initNotificationService();
-
   runApp(const MyApp());
 }
 
@@ -30,6 +26,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final Future<void> _serviceInitialization = Future.wait([
+    settingsStore.initSettingsStore(),
+    dataStore.initDataStore(),
+    NotificationService().initNotificationService(),
+  ]);
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -70,7 +72,17 @@ class _MyAppState extends State<MyApp> {
           },
         ),
       ),
-      home: const AppContainer(),
+      home: FutureBuilder(
+        future: _serviceInitialization,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return const AppContainer();
+          } else {
+            // Display a loading indicator while services are initializing
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 }

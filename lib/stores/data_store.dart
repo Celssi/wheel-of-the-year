@@ -17,18 +17,13 @@ part 'data_store.g.dart';
 class DataStore = DataStoreBase with _$DataStore;
 
 abstract class DataStoreBase with Store {
-  DataStoreBase() {
-    Connectivity().checkConnectivity().then(
-          (connectivityResult) => {
-            hasInternet = connectivityResult == ConnectivityResult.mobile ||
-                connectivityResult == ConnectivityResult.wifi ||
-                connectivityResult == ConnectivityResult.ethernet,
-          },
-        );
+  Future<void> initDataStore() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    hasInternet = connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi ||
+        connectivityResult == ConnectivityResult.ethernet;
 
-    _subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult connectivityResult) {
+    _subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult connectivityResult) {
       hasInternet = connectivityResult == ConnectivityResult.mobile ||
           connectivityResult == ConnectivityResult.wifi ||
           connectivityResult == ConnectivityResult.ethernet;
@@ -40,9 +35,7 @@ abstract class DataStoreBase with Store {
       }
 
       if (hasInternet) {
-        textApi
-            .getTarotText(_selectCardOfTheDay().name)
-            .then((value) => cardOfTheDayText = value);
+        textApi.getTarotText(_selectCardOfTheDay().name).then((value) => cardOfTheDayText = value);
       }
     });
   }
@@ -57,8 +50,7 @@ abstract class DataStoreBase with Store {
   TarotText tarotText = const TarotText(name: '', text: '', keywords: '');
 
   @observable
-  TarotText cardOfTheDayText =
-      const TarotText(name: '', text: '', keywords: '');
+  TarotText cardOfTheDayText = const TarotText(name: '', text: '', keywords: '');
 
   @observable
   bool isLoading = false;
@@ -156,9 +148,7 @@ abstract class DataStoreBase with Store {
     TarotCard selectedCardOfTheDay = _selectCardOfTheDay();
 
     if (hasInternet && selectedCardOfTheDay.name != cardOfTheDayText.name) {
-      textApi
-          .getTarotText(selectedCardOfTheDay.name)
-          .then((value) => cardOfTheDayText = value);
+      textApi.getTarotText(selectedCardOfTheDay.name).then((value) => cardOfTheDayText = value);
     }
 
     return selectedCardOfTheDay;
@@ -172,8 +162,7 @@ abstract class DataStoreBase with Store {
     DateTime date = DateTime.now();
     int dayOfYear = date.difference(DateTime(date.year)).inDays + 1;
 
-    TarotCard selectedCardOfTheDay =
-        cards[dayOfYear % tarotDeck.getAllCards().length];
+    TarotCard selectedCardOfTheDay = cards[dayOfYear % tarotDeck.getAllCards().length];
     return selectedCardOfTheDay;
   }
 }
