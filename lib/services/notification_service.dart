@@ -13,7 +13,7 @@ import 'package:witch_army_knife/models/sabbat.dart';
 class NotificationService {
   final FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsPlugin();
   bool _notificationsEnabled = false;
-  final _random = Random();
+  final Random _random = Random();
 
   Future<void> initNotificationService() async {
     if (settingsStore.showNotifications) {
@@ -30,14 +30,16 @@ class NotificationService {
 
         if (settingsStore.showCardOfTheDay) {
           DateTime now = DateTime.now();
-          for (int i = 1; i <= 10; i++) {
-            await scheduleNotification(
-              'Tarot card of the day has been selected',
-              now.add(Duration(days: i)).year,
-              now.add(Duration(days: i)).month,
-              now.add(Duration(days: i)).day,
-            );
-          }
+          await scheduleNotification(
+            'Tarot card of the day has been selected',
+            now.year,
+            now.month,
+            now.day,
+            10,
+            0,
+            0,
+            DateTimeComponents.time,
+          );
         }
 
         if (settingsStore.showNextSabbat) {
@@ -47,6 +49,10 @@ class NotificationService {
             nextSabbat.date.year,
             nextSabbat.date.month,
             nextSabbat.date.day,
+            10,
+            0,
+            0,
+            DateTimeComponents.dateAndTime,
           );
         }
 
@@ -59,13 +65,17 @@ class NotificationService {
             fullMoonDate.year,
             fullMoonDate.month,
             fullMoonDate.day,
+            10,
+            0,
+            0,
+            DateTimeComponents.dateAndTime,
           );
         }
       }
     }
 
     var initializationSettings = InitializationSettings(
-      android: const AndroidInitializationSettings('@mipmap-hdpi/ic_launcher'),
+      android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
       iOS: DarwinInitializationSettings(
         onDidReceiveLocalNotification: (int id, String? title, String? body, String? payload) async {},
       ),
@@ -88,12 +98,24 @@ class NotificationService {
     return notificationsPlugin.show(_random.nextInt(99999), title, body, await notificationDetails());
   }
 
-  Future<void> scheduleNotification(String message, int year, int month, int day) async {
+  Future<void> scheduleNotification(
+    String message,
+    int year,
+    int month,
+    int day,
+    int hours,
+    int minutes,
+    int seconds,
+    DateTimeComponents matchDateTimeComponents,
+  ) async {
+    int id = _random.nextInt(99999);
+    tz.TZDateTime scheduledDate = await _wantedDateTime(year, month, day, hours, minutes, seconds);
+    print('Scheduling notification with ID $id at $scheduledDate');
     await notificationsPlugin.zonedSchedule(
-      _random.nextInt(99999),
+      id,
       'Witch Army Knife',
       message,
-      await _wantedInstanceOfTenAM(year, month, day),
+      scheduledDate,
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'channelId',
@@ -102,7 +124,7 @@ class NotificationService {
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
+      matchDateTimeComponents: matchDateTimeComponents,
     );
   }
 
@@ -173,15 +195,13 @@ class NotificationService {
     tz.initializeTimeZones();
     final String timeZoneName = await FlutterTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(timeZoneName));
+    print('Local time zone set to: $timeZoneName');
   }
 
-  Future<tz.TZDateTime> _wantedInstanceOfTenAM(int year, int month, int day) async {
+  Future<tz.TZDateTime> _wantedDateTime(int year, int month, int day, int hours, int minutes, int seconds) async {
     await _configureLocalTimeZone();
-    final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
-    tz.TZDateTime scheduledDate = tz.TZDateTime(tz.local, year, month, day, 10);
-    if (scheduledDate.isBefore(now)) {
-      scheduledDate = scheduledDate.add(const Duration(days: 1));
-    }
+    tz.TZDateTime scheduledDate = tz.TZDateTime(tz.local, year, month, day, hours, minutes, seconds);
+    print('Scheduled notification for: $scheduledDate');
     return scheduledDate;
   }
 }

@@ -78,7 +78,6 @@ class _MyAppState extends State<MyApp> {
           if (snapshot.connectionState == ConnectionState.done) {
             return const AppContainer();
           } else {
-            // Display a loading indicator while services are initializing
             return const Center(child: CircularProgressIndicator());
           }
         },
