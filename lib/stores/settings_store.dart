@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/hemisphere.dart';
-import 'package:witch_army_knife/services/notification_service.dart';
 
 part 'settings_store.g.dart';
 
@@ -67,9 +66,9 @@ abstract class SettingsStoreBase with Store {
     prefs.setBool('showNotifications', value);
 
     if (!showNotifications) {
-      NotificationService().cancelNotifications();
+      notificationService.cancelNotifications();
     } else {
-      NotificationService().requestPermissions(openSettingsIfNeeded: openSettingsIfNeeded);
+      notificationService.requestPermissions(openSettingsIfNeeded: openSettingsIfNeeded);
     }
 
     if (context != null) {

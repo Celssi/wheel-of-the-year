@@ -10,6 +10,7 @@ import 'package:witch_army_knife/stores/settings_store.dart';
 final SettingsStore settingsStore = SettingsStore();
 final DataStore dataStore = DataStore();
 final TextApi textApi = TextApi();
+final NotificationService notificationService = NotificationService();
 
 // teema
 
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   final Future<void> _serviceInitialization = Future.wait([
     settingsStore.initSettingsStore(),
     dataStore.initDataStore(),
-    NotificationService().initNotificationService(),
+    notificationService.initNotificationService(),
   ]);
 
   @override

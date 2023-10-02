@@ -94,7 +94,7 @@ class NotificationService {
     );
   }
 
-  Future showNotification({String? title, String? body, String? payLoad}) async {
+  Future showNotification({String? title, String? body}) async {
     return notificationsPlugin.show(_random.nextInt(99999), title, body, await notificationDetails());
   }
 
@@ -110,7 +110,6 @@ class NotificationService {
   ) async {
     int id = _random.nextInt(99999);
     tz.TZDateTime scheduledDate = await _wantedDateTime(year, month, day, hours, minutes, seconds);
-    print('Scheduling notification with ID $id at $scheduledDate');
     await notificationsPlugin.zonedSchedule(
       id,
       'Witch Army Knife',
@@ -195,13 +194,11 @@ class NotificationService {
     tz.initializeTimeZones();
     final String timeZoneName = await FlutterTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(timeZoneName));
-    print('Local time zone set to: $timeZoneName');
   }
 
   Future<tz.TZDateTime> _wantedDateTime(int year, int month, int day, int hours, int minutes, int seconds) async {
     await _configureLocalTimeZone();
     tz.TZDateTime scheduledDate = tz.TZDateTime(tz.local, year, month, day, hours, minutes, seconds);
-    print('Scheduled notification for: $scheduledDate');
     return scheduledDate;
   }
 }
