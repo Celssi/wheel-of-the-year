@@ -16,6 +16,7 @@ class BackgroundContainer extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(backgroundImage),
+          onError: (exception, stackTrace) {},
           fit: BoxFit.cover,
         ),
       ),

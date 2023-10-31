@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:witch_army_knife/helper-widgets/background-container.dart';
-import 'package:witch_army_knife/helper-widgets/content-container.dart';
+import 'package:witch_army_knife/helper-widgets/background_container.dart';
+import 'package:witch_army_knife/helper-widgets/content_container.dart';
 import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/sabbat.dart';

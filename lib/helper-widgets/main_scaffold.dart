@@ -6,11 +6,13 @@ class MainScaffold extends StatelessWidget {
   const MainScaffold({
     required this.body,
     required this.showBottomButtons,
+    this.title = '',
     super.key,
   });
 
   final Widget body;
   final bool showBottomButtons;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,9 @@ class MainScaffold extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: Colors.red,
         ),
-        title: const Text(
-          'Witch Army Knife',
-          style: TextStyle(color: Colors.red, fontSize: textSize),
+        title: Text(
+          title.isNotEmpty ? title : 'Witch Army Knife',
+          style: const TextStyle(color: Colors.red, fontSize: textSize),
         ),
       ),
       body: body,

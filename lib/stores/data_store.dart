@@ -6,6 +6,8 @@ import 'package:mobx/mobx.dart';
 import 'package:witch_army_knife/helpers/sabbat_helpers.dart';
 import 'package:witch_army_knife/main.dart';
 import 'package:witch_army_knife/models/hemisphere.dart';
+import 'package:witch_army_knife/models/library_category.dart';
+import 'package:witch_army_knife/models/library_text.dart';
 import 'package:witch_army_knife/models/sabbat.dart';
 import 'package:witch_army_knife/models/sabbat_text.dart';
 import 'package:witch_army_knife/models/tarot_card.dart';
@@ -44,6 +46,15 @@ abstract class DataStoreBase with Store {
   ObservableList<Sabbat> sabbats = ObservableList<Sabbat>.of(getSabbats());
 
   @observable
+  ObservableList<LibraryCategory> libraryCategories = ObservableList<LibraryCategory>.of([
+    const LibraryCategory(name: 'Goetic Demons', id: "goeticDemons"),
+    const LibraryCategory(name: "Shem HaMephorash's Angels", id: 'angelsOfTheShemHaMephorash')
+  ]);
+
+  @observable
+  ObservableList<LibraryText> libraryTexts = ObservableList<LibraryText>.of([]);
+
+  @observable
   SabbatText sabbatText = const SabbatText(name: '', text: '');
 
   @observable
@@ -60,6 +71,12 @@ abstract class DataStoreBase with Store {
 
   @observable
   Sabbat? selectedSabbat;
+
+  @observable
+  LibraryCategory? selectedCategory;
+
+  @observable
+  LibraryText? selectedLibraryText;
 
   @observable
   TarotCard? selectedTarotCard;
@@ -87,11 +104,29 @@ abstract class DataStoreBase with Store {
   }
 
   @action
+  void setSelectedLibraryCategory(LibraryCategory category) {
+    selectedCategory = category;
+
+    if (hasInternet) {
+      getCategoryItems(category.id);
+    }
+  }
+
+  @action
   void setSelectedTarotCard(TarotCard tarotCard) {
     selectedTarotCard = tarotCard;
 
     if (hasInternet) {
       getTarotText(tarotCard.name);
+    }
+  }
+
+  @action
+  void setSelectedLibraryText(LibraryText text) {
+    selectedLibraryText = text;
+
+    if (hasInternet) {
+      getLibraryText(text.name);
     }
   }
 
@@ -103,9 +138,24 @@ abstract class DataStoreBase with Store {
   }
 
   @action
+  Future getCategoryItems(String name) async {
+    isLoading = true;
+    libraryTexts.clear();
+    libraryTexts.addAll(await textApi.getCategoryItems(name));
+    isLoading = false;
+  }
+
+  @action
   Future getTarotText(String name) async {
     isLoading = true;
     tarotText = await textApi.getTarotText(name);
+    isLoading = false;
+  }
+
+  @action
+  Future getLibraryText(String name) async {
+    isLoading = true;
+    selectedLibraryText = await textApi.getLibraryText(name);
     isLoading = false;
   }
 

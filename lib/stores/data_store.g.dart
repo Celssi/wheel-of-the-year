@@ -54,6 +54,38 @@ mixin _$DataStore on DataStoreBase, Store {
     });
   }
 
+  late final _$libraryCategoriesAtom =
+      Atom(name: 'DataStoreBase.libraryCategories', context: context);
+
+  @override
+  ObservableList<LibraryCategory> get libraryCategories {
+    _$libraryCategoriesAtom.reportRead();
+    return super.libraryCategories;
+  }
+
+  @override
+  set libraryCategories(ObservableList<LibraryCategory> value) {
+    _$libraryCategoriesAtom.reportWrite(value, super.libraryCategories, () {
+      super.libraryCategories = value;
+    });
+  }
+
+  late final _$libraryTextsAtom =
+      Atom(name: 'DataStoreBase.libraryTexts', context: context);
+
+  @override
+  ObservableList<LibraryText> get libraryTexts {
+    _$libraryTextsAtom.reportRead();
+    return super.libraryTexts;
+  }
+
+  @override
+  set libraryTexts(ObservableList<LibraryText> value) {
+    _$libraryTextsAtom.reportWrite(value, super.libraryTexts, () {
+      super.libraryTexts = value;
+    });
+  }
+
   late final _$sabbatTextAtom =
       Atom(name: 'DataStoreBase.sabbatText', context: context);
 
@@ -150,6 +182,38 @@ mixin _$DataStore on DataStoreBase, Store {
     });
   }
 
+  late final _$selectedCategoryAtom =
+      Atom(name: 'DataStoreBase.selectedCategory', context: context);
+
+  @override
+  LibraryCategory? get selectedCategory {
+    _$selectedCategoryAtom.reportRead();
+    return super.selectedCategory;
+  }
+
+  @override
+  set selectedCategory(LibraryCategory? value) {
+    _$selectedCategoryAtom.reportWrite(value, super.selectedCategory, () {
+      super.selectedCategory = value;
+    });
+  }
+
+  late final _$selectedLibraryTextAtom =
+      Atom(name: 'DataStoreBase.selectedLibraryText', context: context);
+
+  @override
+  LibraryText? get selectedLibraryText {
+    _$selectedLibraryTextAtom.reportRead();
+    return super.selectedLibraryText;
+  }
+
+  @override
+  set selectedLibraryText(LibraryText? value) {
+    _$selectedLibraryTextAtom.reportWrite(value, super.selectedLibraryText, () {
+      super.selectedLibraryText = value;
+    });
+  }
+
   late final _$selectedTarotCardAtom =
       Atom(name: 'DataStoreBase.selectedTarotCard', context: context);
 
@@ -206,12 +270,29 @@ mixin _$DataStore on DataStoreBase, Store {
     return _$getSabbatTextAsyncAction.run(() => super.getSabbatText(name));
   }
 
+  late final _$getCategoryItemsAsyncAction =
+      AsyncAction('DataStoreBase.getCategoryItems', context: context);
+
+  @override
+  Future<dynamic> getCategoryItems(String name) {
+    return _$getCategoryItemsAsyncAction
+        .run(() => super.getCategoryItems(name));
+  }
+
   late final _$getTarotTextAsyncAction =
       AsyncAction('DataStoreBase.getTarotText', context: context);
 
   @override
   Future<dynamic> getTarotText(String name) {
     return _$getTarotTextAsyncAction.run(() => super.getTarotText(name));
+  }
+
+  late final _$getLibraryTextAsyncAction =
+      AsyncAction('DataStoreBase.getLibraryText', context: context);
+
+  @override
+  Future<dynamic> getLibraryText(String name) {
+    return _$getLibraryTextAsyncAction.run(() => super.getLibraryText(name));
   }
 
   late final _$DataStoreBaseActionController =
@@ -240,11 +321,33 @@ mixin _$DataStore on DataStoreBase, Store {
   }
 
   @override
+  void setSelectedLibraryCategory(LibraryCategory category) {
+    final _$actionInfo = _$DataStoreBaseActionController.startAction(
+        name: 'DataStoreBase.setSelectedLibraryCategory');
+    try {
+      return super.setSelectedLibraryCategory(category);
+    } finally {
+      _$DataStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSelectedTarotCard(TarotCard tarotCard) {
     final _$actionInfo = _$DataStoreBaseActionController.startAction(
         name: 'DataStoreBase.setSelectedTarotCard');
     try {
       return super.setSelectedTarotCard(tarotCard);
+    } finally {
+      _$DataStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSelectedLibraryText(LibraryText text) {
+    final _$actionInfo = _$DataStoreBaseActionController.startAction(
+        name: 'DataStoreBase.setSelectedLibraryText');
+    try {
+      return super.setSelectedLibraryText(text);
     } finally {
       _$DataStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -265,12 +368,16 @@ mixin _$DataStore on DataStoreBase, Store {
   String toString() {
     return '''
 sabbats: ${sabbats},
+libraryCategories: ${libraryCategories},
+libraryTexts: ${libraryTexts},
 sabbatText: ${sabbatText},
 tarotText: ${tarotText},
 cardOfTheDayText: ${cardOfTheDayText},
 isLoading: ${isLoading},
 selectedTab: ${selectedTab},
 selectedSabbat: ${selectedSabbat},
+selectedCategory: ${selectedCategory},
+selectedLibraryText: ${selectedLibraryText},
 selectedTarotCard: ${selectedTarotCard},
 hasInternet: ${hasInternet},
 tarotDeck: ${tarotDeck},

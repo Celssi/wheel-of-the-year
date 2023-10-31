@@ -27,6 +27,11 @@ class BottomNavigation extends StatelessWidget {
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'Library',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
             backgroundColor: Colors.white,

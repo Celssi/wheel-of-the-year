@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:witch_army_knife/api/text_api.dart';
-import 'package:witch_army_knife/app-container.dart';
+import 'package:witch_army_knife/app_container.dart';
 import 'package:witch_army_knife/helpers/sizes.dart';
 import 'package:witch_army_knife/services/notification_service.dart';
 import 'package:witch_army_knife/stores/data_store.dart';

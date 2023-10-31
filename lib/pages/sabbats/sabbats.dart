@@ -10,17 +10,8 @@ class Sabbats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => ListView(
-        children: getCards(),
+        children: dataStore.sabbats.map((sabbat) => SabbatListItem(sabbat: sabbat)).toList(),
       ),
     );
-  }
-
-  List<Widget> getCards() {
-    List<Widget> sabbats = List.of([]);
-    for (final sabbat in dataStore.sabbats) {
-      sabbats.add(SabbatListItem(sabbat: sabbat));
-    }
-
-    return sabbats;
   }
 }
