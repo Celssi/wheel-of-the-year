@@ -48,7 +48,7 @@ abstract class DataStoreBase with Store {
   @observable
   ObservableList<LibraryCategory> libraryCategories = ObservableList<LibraryCategory>.of([
     const LibraryCategory(name: 'Goetic Demons', id: "goeticDemons"),
-    const LibraryCategory(name: "Shem HaMephorash's Angels", id: 'angelsOfTheShemHaMephorash')
+    const LibraryCategory(name: "Kabbalistic Angels", id: 'kabbalisticAngels')
   ]);
 
   @observable
